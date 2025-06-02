@@ -2,21 +2,43 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
   <meta charset="UTF-8" />
-<meta name="description" content="복합기 렌탈 전문 미래OA하이테크 - 중소기업, 병원, 학원 맞춤 서비스 제공.">
-  <!-- favicon-->
-<link rel="icon" href="images/favicon.jpg" type="image/jpg">
+  <meta name="description" content="복합기 렌탈 전문 미래OA하이테크 - 중소기업, 병원, 학원 맞춤 서비스 제공.">
+  <title>복합기 렌탈 전문 미래OA하이테크</title>
+
+  <!-- favicon -->
+  <link rel="icon" href="images/favicon.jpg" type="image/jpg">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
   <!-- Custom Styles -->
   <link href="style.css" rel="stylesheet" />
 
+  <!-- 카카오 지도 JavaScript SDK 로드 (반드시 본인 JavaScript 키로 교체) -->
+  <script
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_APP_KEY&libraries=services"
+    onload="initKakaoMap()"
+  ></script>
+
+  <script>
+    // SDK 로드 완료 시점에 호출되는 함수
+    function initKakaoMap() {
+      var mapContainer = document.getElementById('map');
+      var mapOption = {
+        center: new kakao.maps.LatLng(37.5665, 126.9780),
+        level: 3
+      };
+      var map = new kakao.maps.Map(mapContainer, mapOption);
+      var marker = new kakao.maps.Marker({
+        position: mapOption.center
+      });
+      marker.setMap(map);
+    }
+  </script>
 
   <style>
     body {
@@ -32,225 +54,209 @@
       animation: scroll-text 15s linear infinite;
     }
     @keyframes scroll-text {
-      0% {
-        transform: translateX(100%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
-#fixed-sidebar {
-    position: fixed;
-    bottom: 20px; /* 화면 아래에서 20px 위 */
-    right: 20px;  /* 화면 오른쪽에서 20px 왼쪽 */
-    width: 160px;  /* 적당한 크기 */
-    height: 120px;
-    z-index: 15; /* 버튼보다 위에 표시됨 */
-}
-
-#fixed-sidebar a {
-    display: block;
-    width: 16px;          /* 너비 고정 */
-    margin-bottom: 8px;
-    transform: none;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-}
-
-#fixed-sidebar a img {
-    display: block;
-    width: 100%;
-    height: auto;         /* 높이 자동으로 비율 유지 */
-    object-fit: contain;
-    border-radius: 3px;
-    pointer-events: none;
-}
-
-#fixed-sidebar a:hover {
-    transform: translateX(-4px) scale(1.1);
-    opacity: 0.9;
-}
-
-#fixed-sidebar a:active {
-    transform: translateX(-4px) scale(1.1);
-    opacity: 0.9;
-}
-
+    #fixed-sidebar {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 160px;
+      height: 120px;
+      z-index: 15;
+    }
+    #fixed-sidebar a {
+      display: block;
+      width: 16px;
+      margin-bottom: 8px;
+      transform: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #fixed-sidebar a img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border-radius: 3px;
+      pointer-events: none;
+    }
+    #fixed-sidebar a:hover,
+    #fixed-sidebar a:active {
+      transform: translateX(-4px) scale(1.1);
+      opacity: 0.9;
+    }
+    /* 카카오 지도 컨테이너 */
+    #map {
+      width: 100%;
+      height: 320px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
   </style>
 </head>
 
 <body>
   <div id="fixed-sidebar">
-  <a href="#top" title="TOP">
-    <img src="images/top.gif" alt="TOP">
-  </a>
-  <a href="faq.html" title="자주 묻는 질문">
-    <img src="images/sidebar-faq.jpg" alt="자주 묻는 질문">
-  </a>
-  <a href="contact.html" title="고객센터">
-    <img src="images/sidebar-cs.jpg" alt="고객센터">
-  </a>
-  <a href="#recent" title="네이버블로그">
-    <img src="images/naver.png" alt="네이버블로그">
-  </a>
-</div>
-
-
-<header class="bg-white shadow sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-    <!-- 로고 & 홈 링크 -->
-    <a href="index.html" class="flex items-center space-x-3">
-      <img src="images/oalogo.jpg" alt="회사 로고" class="h-20" />
+    <a href="#top" title="TOP">
+      <img src="images/top.gif" alt="TOP">
     </a>
+    <a href="faq.html" title="자주 묻는 질문">
+      <img src="images/sidebar-faq.jpg" alt="자주 묻는 질문">
+    </a>
+    <a href="contact.html" title="고객센터">
+      <img src="images/sidebar-cs.jpg" alt="고객센터">
+    </a>
+    <a href="#recent" title="네이버블로그">
+      <img src="images/naver.png" alt="네이버블로그">
+    </a>
+  </div>
+
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <!-- 로고 & 홈 링크 -->
+      <a href="index.html" class="flex items-center space-x-3">
+        <img src="images/oalogo.jpg" alt="회사 로고" class="h-20" />
+      </a>
+      
+      <!-- PC용 네비게이션 -->
+      <nav class="hidden sm:block">
+        <ul class="flex space-x-10 text-base font-bold text-gray-800">
+          <li>
+            <a href="index.html" class="hover:text-blue-600 transition whitespace-nowrap">홈</a>
+          </li>
+          <!-- 잉크젯복합기 -->
+          <li class="relative group">
+            <a href="#" class="hover:text-blue-600 transition inline-block whitespace-nowrap">잉크젯복합기</a>
+            <ul class="absolute left-0 top-full mt-2 w-60 bg-white shadow-lg rounded-md py-2
+                       opacity-0 invisible
+                       group-hover:opacity-100 group-hover:visible
+                       hover:opacity-100 hover:visible
+                       pointer-events-none group-hover:pointer-events-auto hover:pointer-events-auto
+                       transition duration-200">
+              <li>
+                <a href="small-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러소형복합기(A4)</a>
+              </li>
+              <li>
+                <a href="large-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러대형복합기(A3)</a>
+              </li>
+            </ul>
+          </li>
+          <!-- 레이저복합기 -->
+          <li class="relative group">
+            <a href="#" class="hover:text-blue-600 transition inline-block whitespace-nowrap">레이저복합기</a>
+            <ul class="absolute left-0 top-full mt-2 w-60 bg-white shadow-lg rounded-md py-2
+                       opacity-0 invisible
+                       group-hover:opacity-100 group-hover:visible
+                       hover:opacity-100 hover:visible
+                       pointer-events-none group-hover:pointer-events-auto hover:pointer-events-auto
+                       transition duration-200">
+              <li>
+                <a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러소형복합기(A4)</a>
+              </li>
+              <li>
+                <a href="large-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러대형복합기(A3)</a>
+              </li>
+              <li>
+                <a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">흑백소형복합기(A4)</a>
+              </li>
+              <li>
+                <a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">흑백대형복합기(A3)</a>
+              </li>
+            </ul>
+          </li>
+          <!-- 문서세단기 -->
+          <li class="relative group">
+            <a href="#" class="hover:text-blue-600 transition inline-block whitespace-nowrap">문서세단기</a>
+            <ul class="absolute left-0 top-full mt-2 w-60 bg-white shadow-lg rounded-md py-2
+                       opacity-0 invisible
+                       group-hover:opacity-100 group-hover:visible
+                       hover:opacity-100 hover:visible
+                       pointer-events-none group-hover:pointer-events-auto hover:pointer-events-auto
+                       transition duration-200">
+              <li>
+                <a href="small-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">문서세단기</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="event.html" class="hover:text-blue-600 transition whitespace-nowrap">이벤트</a></li>
+          <li><a href="installation.html" class="hover:text-blue-600 transition whitespace-nowrap">설치사례</a></li>
+        </ul>
+      </nav>
     
-    <!-- PC용 네비게이션 -->
-    <nav class="hidden sm:block">
-      <ul class="flex space-x-10 text-base font-bold text-gray-800">
-
-        <li>
-          <a href="index.html" class="hover:text-blue-600 transition whitespace-nowrap">홈</a>
-        </li>
-
-        <!-- 잉크젯복합기기 -->
-        <li class="relative group">
-          <a href="#" class="hover:text-blue-600 transition inline-block whitespace-nowrap">잉크젯복합기</a>
-          <ul
-            class="absolute left-0 top-full mt-2 w-60 bg-white shadow-lg rounded-md py-2
-                   opacity-0 invisible
-                   group-hover:opacity-100 group-hover:visible
-                   hover:opacity-100 hover:visible
-                   pointer-events-none group-hover:pointer-events-auto hover:pointer-events-auto
-                   transition duration-200"
-          >
-            <li>
-              <a href="small-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러소형복합기(A4)</a>
-            </li>
-            <li>
-              <a href="large-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러대형복합기(A3)</a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- 레이저복합기 -->
-        <li class="relative group">
-          <a href="#" class="hover:text-blue-600 transition inline-block whitespace-nowrap">레이저복합기</a>
-          <ul
-            class="absolute left-0 top-full mt-2 w-60 bg-white shadow-lg rounded-md py-2
-                   opacity-0 invisible
-                   group-hover:opacity-100 group-hover:visible
-                   hover:opacity-100 hover:visible
-                   pointer-events-none group-hover:pointer-events-auto hover:pointer-events-auto
-                   transition duration-200"
-          >
-            <li>
-              <a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러소형복합기(A4)</a>
-            </li>
-            <li>
-              <a href="large-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러대형복합기(A3)</a>
-            </li>
-            <li>
-              <a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">흑백소형복합기(A4)</a>
-            </li>
-            <li>
-              <a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">흑백대형복합기(A3)</a>
-            </li>
-          </ul>
-        </li>
-        <!-- 잉크젯복합기기 -->
-        <li class="relative group">
-          <a href="#" class="hover:text-blue-600 transition inline-block whitespace-nowrap">문세세단기</a>
-          <ul
-            class="absolute left-0 top-full mt-2 w-60 bg-white shadow-lg rounded-md py-2
-                   opacity-0 invisible
-                   group-hover:opacity-100 group-hover:visible
-                   hover:opacity-100 hover:visible
-                   pointer-events-none group-hover:pointer-events-auto hover:pointer-events-auto
-                   transition duration-200"
-          >
-            <li>
-              <a href="small-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">문서세단기</a>
-            </li>
-          </ul>
-        </li>
-
-        <li><a href="event.html" class="hover:text-blue-600 transition whitespace-nowrap">이벤트</a></li>
-        <li><a href="installation.html" class="hover:text-blue-600 transition whitespace-nowrap">설치사례</a></li>
-      </ul>
-    </nav>
-  
-    <!-- PC용 연락처 -->
-    <div class="hidden sm:block text-gray-600 font-semibold whitespace-nowrap">
-      <span>문의: 010-3794-8363 (평일 09:00~18:00)</span>
+      <!-- PC용 연락처 -->
+      <div class="hidden sm:block text-gray-600 font-semibold whitespace-nowrap">
+        <span>문의: 010-3794-8363 (평일 09:00~18:00)</span>
+      </div>
+    
+      <!-- 모바일 햄버거 버튼 -->
+      <button id="menu-btn" class="sm:hidden focus:outline-none text-gray-800" aria-label="메뉴 열기" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
     </div>
 
-    <!-- 모바일 햄버거 버튼 -->
-    <button id="menu-btn" class="sm:hidden focus:outline-none text-gray-800" aria-label="메뉴 열기" aria-expanded="false">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    <!-- 모바일 메뉴 -->
+    <nav id="mobile-menu" class="sm:hidden fixed top-0 left-0 w-full h-full bg-white z-40 transform -translate-x-full transition-transform duration-300">
+      <div class="px-6 py-8">
+        <button id="menu-close-btn" class="mb-8 text-gray-800 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <ul class="space-y-6 text-lg font-bold text-gray-800">
+          <li><a href="index.html" class="block">홈</a></li>
+          <li><a href="small-color.html" class="block">소형컬러복합기 (A4)</a></li>
+          <li><a href="large-color.html" class="block">대형컬러복합기 (A4)</a></li>
+          <li><a href="small-bw.html" class="block">소형흑백복합기 (A3)</a></li>
+          <li><a href="large-bw.html" class="block">대형흑백복합기 (A3)</a></li>
+          <li><a href="event.html" class="block">이벤트</a></li>
+          <li><a href="installation.html" class="block">설치사례</a></li>
+          <li class="mt-6 text-gray-600 font-semibold whitespace-nowrap">문의: 010-3794-8363 (평일 09:00~18:00)</li>
+        </ul>
+      </div>
+    </nav>
+
+    <script>
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuCloseBtn = document.getElementById('menu-close-btn');
+
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('-translate-x-full');
+      });
+      menuCloseBtn.addEventListener('click', () => {
+        mobileMenu.classList.add('-translate-x-full');
+      });
+    </script>
+  </header>
+
+  <section class="w-full relative overflow-hidden">
+    <!-- 슬라이드 컨테이너 -->
+    <div id="slider" class="flex transition-transform duration-500 ease-in-out">
+      <img src="images/banner1.jpg" class="w-full flex-shrink-0" alt="배너 1">
+      <img src="images/banner2.jpg" class="w-full flex-shrink-0" alt="배너 2">
+      <img src="images/banner3.jpg" class="w-full flex-shrink-0" alt="배너 3">
+    </div>
+
+    <!-- 왼쪽 버튼 -->
+    <button onclick="slide(-1)" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow">
+      <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
       </svg>
     </button>
-    <!-- 모바일 메뉴 추가 -->
-<nav id="mobile-menu" class="sm:hidden fixed top-0 left-0 w-full h-full bg-white z-40 transform -translate-x-full transition-transform duration-300">
-  <div class="px-6 py-8">
-    <button id="menu-close-btn" class="mb-8 text-gray-800 focus:outline-none">
-    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  </button>
 
-    <ul class="space-y-6 text-lg font-bold text-gray-800">
-      <li><a href="index.html" class="block">홈</a></li>
-      <li><a href="small-color.html" class="block">소형컬러복합기 (A4)</a></li>
-      <li><a href="large-color.html" class="block">대형컬러복합기 (A4)</a></li>
-      <li><a href="small-bw.html" class="block">소형흑백복합기 (A3)</a></li>
-      <li><a href="large-bw.html" class="block">대형흑백복합기 (A3)</a></li>
-      <li><a href="event.html" class="block">이벤트</a></li>
-      <li><a href="installation.html" class="block">설치사례</a></li>
-      <li class="mt-6 text-gray-600 font-semibold whitespace-nowrap">문의: 010-3794-8363 (평일 09:00~18:00)</li>
-    </ul>
-  </div>
-</nav>
+    <!-- 오른쪽 버튼 -->
+    <button onclick="slide(1)" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow">
+      <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </section>
 
-<script>
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuCloseBtn = document.getElementById('menu-close-btn');
-
-  menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.remove('-translate-x-full');
-  });
-
-  menuCloseBtn.addEventListener('click', () => {
-    mobileMenu.classList.add('-translate-x-full');
-  });
-</script>
-  </div>
-
-</header>
-<section class="w-full relative overflow-hidden">
-  <!-- 슬라이드 컨테이너 -->
-  <div id="slider" class="flex transition-transform duration-500 ease-in-out">
-    <img src="images/banner1.jpg" class="w-full flex-shrink-0" alt="배너 1">
-    <img src="images/banner2.jpg" class="w-full flex-shrink-0" alt="배너 2">
-    <img src="images/banner3.jpg" class="w-full flex-shrink-0" alt="배너 3">
-  </div>
-
-  <!-- 왼쪽 버튼 -->
-  <button onclick="slide(-1)" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow">
-    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-    </svg>
-  </button>
-
-  <!-- 오른쪽 버튼 -->
-  <button onclick="slide(1)" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/70 hover:bg-white rounded-full p-2 shadow">
-    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-    </svg>
-  </button>
-</section>
-  <!-- 회사소개 -->
   <section id="about" class="py-20 bg-white">
     <div class="max-w-5xl mx-auto px-6 text-center">
       <h3 class="text-3xl font-bold text-gray-800 mb-6">회사소개</h3>
@@ -261,91 +267,95 @@
     </div>
   </section>
 
+  <!-- 구분선 -->
+  <div class="border-t border-gray-400 my-12"></div>
 
-<section class="max-w-7xl mx-auto px-6 py-12">
-  <h2 class="text-3xl font-bold text-center mb-2">베스트 상품</h2>
-  <p class="text-center text-gray-500 mb-12">가장 많이 렌탈하는 상품 모음</p>
+  <!-- 카카오 지도 섹션 -->
+  <section id="location" class="max-w-7xl mx-auto px-6 mb-12">
+    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">오시는 길</h3>
+    <div id="map"></div>
+  </section>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+  <section class="max-w-7xl mx-auto px-6 py-12">
+    <h2 class="text-3xl font-bold text-center mb-2">베스트 상품</h2>
+    <p class="text-center text-gray-500 mb-12">가장 많이 렌탈하는 상품 모음</p>
 
-    <!-- 상품 1 -->
-    <a href="product-detail.html?id=best1" class="block">
-        <article class="bg-white rounded-lg shadow-lg hover:shadow-xl hover:ring-2 hover:ring-black hover:ring-opacity-20 transition-all duration-300 cursor-pointer">
-        <div class="p-4 flex justify-center">
-          <img src="images/bw-printer.jpg" alt="신도리코 컬러 레이저 복합기 D470" class="w-96 h-auto object-contain" />
-        </div>
-        <div class="px-6 pb-6 text-center space-y-2">
-          <div class="flex justify-center space-x-2 mb-2">
-            <span class="text-xs font-semibold px-2 py-1 bg-green-400 text-white rounded">컬러</span>
-            <span class="text-xs font-semibold px-2 py-1 bg-purple-500 text-white rounded">추천</span>
-            <span class="text-xs font-semibold px-2 py-1 bg-blue-400 text-white rounded">BEST</span>
-            <span class="text-xs font-semibold px-2 py-1 bg-pink-500 text-white rounded">NEW</span>
-          </div>
-          <h3 class="text-lg font-semibold">신도리코 컬러 레이저 복합기 D470</h3>
-          <p class="text-sm text-gray-500">모델명 : D470<br>속도 25매 / 해상도 1200dpi</p>
-          <p class="mt-4 text-xl font-bold text-red-600">80,000원</p>
-        </div>
-      </article>
-    </a>
-
-    <!-- 상품 2 -->
-    <a href="product-detail.html?id=best2" class="block">
-        <article class="bg-white rounded-lg shadow-lg hover:shadow-xl hover:ring-2 hover:ring-black hover:ring-opacity-20 transition-all duration-300 cursor-pointer">
-        <div class="p-4 flex justify-center">
-          <img src="images/bw-printer1.jpg" alt="신도리코 컬러 레이저 복합기 D450" class="w-96 h-auto object-contain" />
-        </div>
-        <div class="px-6 pb-6 text-center space-y-2">
-          <div class="flex justify-center space-x-2 mb-2">
-            <span class="text-xs font-semibold px-2 py-1 bg-green-400 text-white rounded">컬러</span>
-            <span class="text-xs font-semibold px-2 py-1 bg-purple-500 text-white rounded">추천</span>
-            <span class="text-xs font-semibold px-2 py-1 bg-pink-600 text-white rounded">HOT</span>
-          </div>
-          <h3 class="text-lg font-semibold">신도리코 컬러 레이저 복합기 D450</h3>
-          <p class="text-sm text-gray-500">모델명 : D450<br>속도 25매 / 해상도 1200dpi</p>
-          <p class="mt-4 text-xl font-bold text-red-600">70,000원</p>
-        </div>
-      </article>
-    </a>
-
-    <!-- 상품 3 -->
-    <a href="product-detail.html?id=best3" class="block">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- 상품 1 -->
+      <a href="product-detail.html?id=best1" class="block">
         <article class="bg-white rounded-lg shadow-lg hover:shadow-xl hover:ring-2 hover:ring-black hover:ring-opacity-20 transition-all duration-300 cursor-pointer">
           <div class="p-4 flex justify-center">
-          <img src="images/bw-printer2.jpg" alt="신도리코 컬러 레이저 복합기 D320" class="w-96 h-auto object-contain" />
-        </div>
-        <div class="px-6 pb-6 text-center space-y-2">
-          <div class="flex justify-center space-x-2 mb-2">
-            <span class="text-xs font-semibold px-2 py-1 bg-green-400 text-white rounded">컬러</span>
-            <span class="text-xs font-semibold px-2 py-1 bg-blue-400 text-white rounded">BEST</span>
-            <span class="text-xs font-semibold px-2 py-1 bg-pink-600 text-white rounded">HOT</span>
+            <img src="images/HP9010.jpg" alt="HP9010 잉크젯 컬러러복합기" class="w-96 h-auto object-contain" />
           </div>
-          <h3 class="text-lg font-semibold">신도리코 컬러 레이저 복합기 D320</h3>
-          <p class="text-sm text-gray-500">모델명 : D320<br>속도 22매 / 해상도 1200dpi</p>
-          <p class="mt-4 text-xl font-bold text-red-600">60,000원</p>
-        </div>
-      </article>
-    </a>
-
-    <!-- 상품 4 -->
-    <a href="product-detail.html?id=best4" class="block">
+          <div class="px-6 pb-6 text-center space-y-2">
+            <div class="flex justify-center space-x-2 mb-2">
+              <span class="text-xs font-semibold px-2 py-1 bg-green-400 text-white rounded">컬러</span>
+              <span class="text-xs font-semibold px-2 py-1 bg-purple-500 text-white rounded">추천</span>
+              <span class="text-xs font-semibold px-2 py-1 bg-blue-400 text-white rounded">BEST</span>
+              <span class="text-xs font-semibold px-2 py-1 bg-pink-500 text-white rounded">NEW</span>
+            </div>
+            <h3 class="text-lg font-semibold">HP9010 잉크젯 컬러복합기</h3>
+            <p class="text-sm text-gray-500">모델명 : HP-9010<br>자동양면인쇄 / 해상도 1200dpi</p>
+            <p class="mt-4 text-xl font-bold text-red-600">80,000원</p>
+          </div>
+        </article>
+      </a>
+      <!-- 상품 2 -->
+      <a href="product-detail.html?id=best2" class="block">
         <article class="bg-white rounded-lg shadow-lg hover:shadow-xl hover:ring-2 hover:ring-black hover:ring-opacity-20 transition-all duration-300 cursor-pointer">
-            <div class="p-4 flex justify-center">
-          <img src="images/bw-printer3.jpg" alt="신도리코 컬러 레이저 복합기 D420" class="w-96 h-auto object-contain" />
-        </div>
-        <div class="px-6 pb-6 text-center space-y-2">
-          <div class="flex justify-center space-x-2 mb-2">
-            <span class="text-xs font-semibold px-2 py-1 bg-green-400 text-white rounded">컬러</span>
-            <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-white rounded">특가</span>
+          <div class="p-4 flex justify-center">
+            <img src="images/GX7092.jpg" alt="캐논 7090 컬러복합기" class="w-96 h-auto object-contain" />
           </div>
-          <h3 class="text-lg font-semibold">신도리코 컬러 레이저 복합기 D420</h3>
-          <p class="text-sm text-gray-500">모델명 : D420<br>속도 25매 / 해상도 1200dpi</p>
-          <p class="mt-4 text-xl font-bold text-red-600">60,000원</p>
-        </div>
-      </article>
-    </a>
+          <div class="px-6 pb-6 text-center space-y-2">
+            <div class="flex justify-center space-x-2 mb-2">
+              <span class="text-xs font-semibold px-2 py-1 bg-green-400 text-white rounded">컬러</span>
+              <span class="text-xs font-semibold px-2 py-1 bg-purple-500 text-white rounded">추천</span>
+              <span class="text-xs font-semibold px-2 py-1 bg-pink-600 text-white rounded">HOT</span>
+            </div>
+            <h3 class="text-lg font-semibold">캐논7090 컬러복합기</h3>
+            <p class="text-sm text-gray-500">모델명 : 캐논-7090<br>자동양면인쇄 / 해상도 1200dpi</p>
+            <p class="mt-4 text-xl font-bold text-red-600">70,000원</p>
+          </div>
+        </article>
+      </a>
+      <!-- 상품 3 -->
+      <a href="product-detail.html?id=best3" class="block">
+        <article class="bg-white rounded-lg shadow-lg hover:shadow-xl hover:ring-2 hover:ring-black hover:ring-opacity-20 transition-all duration-300 cursor-pointer">
+          <div class="p-4 flex justify-center">
+            <img src="images/C3322.jpg" alt="캐논 IR C3322 컬러 복합기" class="w-96 h-auto object-contain" />
+          </div>
+          <div class="px-6 pb-6 text-center space-y-2">
+            <div class="flex justify-center space-x-2 mb-2">
+              <span class="text-xs font-semibold px-2 py-1 bg-green-400 text-white rounded">컬러</span>
+              <span class="text-xs font-semibold px-2 py-1 bg-blue-400 text-white rounded">BEST</span>
+              <span class="text-xs font-semibold px-2 py-1 bg-pink-600 text-white rounded">HOT</span>
+            </div>
+            <h3 class="text-lg font-semibold">캐논IR C3322 컬러복합기</h3>
+            <p class="text-sm text-gray-500">모델명 : IR-C3322<br>자동양면인쇄 / 해상도 1200dpi</p>
+            <p class="mt-4 text-xl font-bold text-red-600">60,000원</p>
+          </div>
+        </article>
+      </a>
+      <!-- 상품 4 -->
+      <a href="product-detail.html?id=best4" class="block">
+        <article class="bg-white rounded-lg shadow-lg hover:shadow-xl hover:ring-2 hover:ring-black hover:ring-opacity-20 transition-all duration-300 cursor-pointer">
+          <div class="p-4 flex justify-center">
+            <img src="images/x33220NR.jpg" alt="삼성 SL-X3220NR A3 컬러 복합기" class="w-96 h-auto object-contain" />
+          </div>
+          <div class="px-6 pb-6 text-center space-y-2">
+            <div class="flex justify-center space-x-2 mb-2">
+              <span class="text-xs font-semibold px-2 py-1 bg-green-400 text-white rounded">컬러</span>
+              <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-white rounded">특가</span>
+            </div>
+            <h3 class="text-lg font-semibold">삼성SL-X3220NR 컬러복합기</h3>
+            <p class="text-sm text-gray-500">모델명 : 삼성 SL-X3220NR<br>속도 25매 / 해상도 1200dpi</p>
+            <p class="mt-4 text-xl font-bold text-red-600">60,000원</p>
+          </div>
+        </article>
+      </a>
+    </div>
+  </section>
 
-  </div>
-</section>
   <!-- 서비스 -->
   <section id="service" class="py-20 bg-gray-50">
     <div class="max-w-6xl mx-auto px-6">
@@ -366,62 +376,49 @@
       </div>
     </div>
   </section>
+
+  <!-- 구분선 -->
+  <div class="border-t border-gray-200 my-12"></div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8 mt-20">
+    <div class="max-w-6xl mx-auto px-6 text-center text-sm space-y-2">
+      <p>(주) 미래OA하이테크 | 대표: 김성식</p>
+      <p>사업자등록번호: 123-45-67890 | 대표번호: 010-3794-8363</p>
+      <p>주소: 경기도 시흥시 조남동 719-1</p>
+      <p class="text-gray-400 text-xs">Copyright © 2025 미래OA하이테크. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- 슬라이더 스크립트 -->
   <script>
-  let index = 0;
-  const slider = document.getElementById('slider');
-  const slides = slider.children;
-
-  function slide(n) {
-    index = (index + n + slides.length) % slides.length;
-    slider.style.transform = `translateX(-${index * 100}%)`;
-  }
-
-  // 자동 재생 (3초 간격)
-  setInterval(() => slide(1), 3000);
-</script>
-<script>
-  const swiper = new Swiper('.swiper', {
-    loop: true,               // 무한 반복
-    autoplay: {               // 자동 슬라이드
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    pagination: {             // 하단 점 네비게이션
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {             // 좌우 화살표
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
-</script>
-</body>
-</html>
-<footer class="bg-gray-800 text-white py-8 mt-20">
-  <div class="max-w-6xl mx-auto px-6 text-center text-sm space-y-2">
-    <p>(주) 미래OA하이테크 | 대표: 김성식</p>
-    <p>사업자등록번호: 123-45-67890 | 대표번호: 010-3794-8363</p>
-    <p>주소: 경기도 시흥시 조남동 719-1</p>
-    <p class="text-gray-400 text-xs">Copyright © 2025 미래OA하이테크. All rights reserved.</p>
-  </div>
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ko">
-<head>
-
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Custom Styles -->
-  <link href="style.css" rel="stylesheet" />
-
-
-  <style>
-    body {
-      scroll-behavior: smooth;
-      font-family: Arial, sans-serif;
+    let index = 0;
+    const slider = document.getElementById('slider');
+    const slides = slider.children;
+    function slide(n) {
+      index = (index + n + slides.length) % slides.length;
+      slider.style.transform = `translateX(-${index * 100}%)`;
     }
-  </style>
-</head>
+    setInterval(() => slide(1), 3000);
+  </script>
+
+  <!-- Swiper 초기화 (필요 시) -->
+  <script>
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+</body>
 </html>
