@@ -403,26 +403,26 @@
     });
   </script>
 
-<!-- Kakao Maps SDK 로드 (autoload=false) -->
+<!-- 카카오맵 SDK autoload 비활성화 -->
 <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d95535d2134a278b616878a272064d7b&autoload=false"></script>
 
 <script>
-  function initKakaoMap() {
-    const container = document.getElementById('map');
-    if (!container) return;
+  // SDK 로드 이후 지도 초기화
+  window.addEventListener("DOMContentLoaded", function () {
+    kakao.maps.load(function () {
+      const container = document.getElementById('map');
+      if (!container) return;
 
-    const options = {
-      center: new kakao.maps.LatLng(37.5665, 126.9780),
-      level: 6
-    };
+      const options = {
+        center: new kakao.maps.LatLng(37.5665, 126.9780),
+        level: 6
+      };
 
-    const map = new kakao.maps.Map(container, options);
-    const marker = new kakao.maps.Marker({ position: options.center });
-    marker.setMap(map);
-  }
-
-  // SDK 로드 후 실행
-  kakao.maps.load(initKakaoMap);
+      const map = new kakao.maps.Map(container, options);
+      const marker = new kakao.maps.Marker({ position: options.center });
+      marker.setMap(map);
+    });
+  });
 </script>
 
 </body>
