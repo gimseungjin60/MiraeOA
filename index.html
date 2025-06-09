@@ -403,11 +403,10 @@
     });
   </script>
 
-<!-- Kakao Maps SDK: autoload=false 설정 -->
+<!-- Kakao Maps SDK 로드 (autoload=false) -->
 <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d95535d2134a278b616878a272064d7b&autoload=false"></script>
 
 <script>
-  // Kakao 지도 초기화 함수
   function initKakaoMap() {
     const container = document.getElementById('map');
     if (!container) return;
@@ -422,7 +421,7 @@
     marker.setMap(map);
   }
 
-  // SDK 로드 완료 후 지도 로드
+  // SDK 로드 후 실행
   kakao.maps.load(initKakaoMap);
 </script>
 
