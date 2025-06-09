@@ -404,29 +404,28 @@
       },
     });
   </script>
-<!-- SDK 비동기 로드 & initKakaoMap 실행 -->
-<script async defer
-  src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d95535d2134a278b616878a272064d7b&autoload=false"
-  onload="kakao.maps.load(initKakaoMap)">
-</script>
-
+<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_APP_KEY&autoload=false"></script>
 <script>
-  function initKakaoMap() {
-    const container = document.getElementById("map");
-    if (!container) {
-      console.error("❌ map 컨테이너를 찾지 못했습니다.");
+  window.addEventListener("DOMContentLoaded", function () {
+    if (typeof kakao === "undefined" || !kakao.maps) {
+      console.error("❌ Kakao SDK 로딩 실패");
       return;
     }
 
-    const options = {
-      center: new kakao.maps.LatLng(37.5665, 126.9780),
-      level: 6
-    };
+    kakao.maps.load(function () {
+      const container = document.getElementById("map");
+      if (!container) return;
 
-    const map = new kakao.maps.Map(container, options);
-    const marker = new kakao.maps.Marker({ position: options.center });
-    marker.setMap(map);
-  }
+      const options = {
+        center: new kakao.maps.LatLng(37.5665, 126.9780),
+        level: 6
+      };
+
+      const map = new kakao.maps.Map(container, options);
+      const marker = new kakao.maps.Marker({ position: options.center });
+      marker.setMap(map);
+    });
+  });
 </script>
 
 </body>
