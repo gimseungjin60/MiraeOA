@@ -12,148 +12,431 @@
       background-color: #ffffff;
       color: #1f2937;
     }
-    .product-title {
-      font-size: 20px;
-      font-weight: 700;
+    /* 드롭다운 문제 해결용 */
+    nav ul li.relative:hover > ul,
+    nav ul li.relative ul:hover {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
     }
-    .product-price {
-      color: #dc2626;
-      font-size: 20px;
-      font-weight: bold;
+    nav ul li.relative ul {
+      margin-top: 0 !important; /* mt-2 제거 */
     }
-    .product-detail-table select {
-      border: 1px solid #d1d5db;
-      border-radius: 4px;
-      padding: 8px;
-      width: 100%;
-    }
+    .fade-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .fade-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
-<header class="bg-white shadow sticky top-0 z-50">
+  <!-- HEADER -->
+  <header class="bg-white shadow sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-      <!-- 로고 & 홈 링크 -->
-      <a href="index.html" class="flex items-center space-x-3">
+      <!-- 로고 -->
+      <a href="index.html" class="flex items-center">
         <img src="images/oalogo.jpg" alt="회사 로고" class="h-20" />
       </a>
-      
-      <!-- PC용 네비게이션 -->
+      <!-- PC 네비게이션 -->
       <nav class="hidden sm:block">
         <ul class="flex space-x-10 text-base font-bold text-gray-800">
-          <li>
-            <a href="index.html" class="hover:text-blue-600 transition whitespace-nowrap">홈</a>
-          </li>
-          <!-- 잉크젯복합기 -->
+          <li><a href="index.html" class="hover:text-blue-600 transition">홈</a></li>
           <li class="relative group">
-            <a href="#" class="hover:text-blue-600 transition inline-block whitespace-nowrap">잉크젯복합기</a>
-            <ul class="absolute left-0 top-full mt-2 w-60 bg-white shadow-lg rounded-md py-2
+            <a href="#" class="hover:text-blue-600 transition">잉크젯복합기</a>
+            <ul class="absolute left-0 top-full w-60 bg-white shadow-lg rounded-md py-2
                        opacity-0 invisible
                        group-hover:opacity-100 group-hover:visible
-                       hover:opacity-100 hover:visible
-                       pointer-events-none group-hover:pointer-events-auto hover:pointer-events-auto
                        transition duration-200">
-              <li>
-                <a href="small-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러소형복합기(A4)</a>
-              </li>
-              <li>
-                <a href="large-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러대형복합기(A3)</a>
-              </li>
+              <li><a href="ink-small-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm">컬러소형복합기(A4)</a></li>
+              <li><a href="ink-large-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm">컬러대형복합기(A3)</a></li>
             </ul>
           </li>
-          <!-- 레이저복합기 -->
           <li class="relative group">
-            <a href="#" class="hover:text-blue-600 transition inline-block whitespace-nowrap">레이저복합기</a>
-            <ul class="absolute left-0 top-full mt-2 w-60 bg-white shadow-lg rounded-md py-2
+            <a href="#" class="hover:text-blue-600 transition">레이저복합기</a>
+            <ul class="absolute left-0 top-full w-60 bg-white shadow-lg rounded-md py-2
                        opacity-0 invisible
                        group-hover:opacity-100 group-hover:visible
-                       hover:opacity-100 hover:visible
-                       pointer-events-none group-hover:pointer-events-auto hover:pointer-events-auto
                        transition duration-200">
-              <li>
-                <a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러소형복합기(A4)</a>
-              </li>
-              <li>
-                <a href="large-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러대형복합기(A3)</a>
-              </li>
-              <li>
-                <a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">흑백소형복합기(A4)</a>
-              </li>
-              <li>
-                <a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">흑백대형복합기(A3)</a>
-              </li>
+              <li><a href="small-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm">컬러소형복합기(A4)</a></li>
+              <li><a href="large-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm">컬러대형복합기(A3)</a></li>
+              <li><a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm">흑백소형복합기(A4)</a></li>
+              <li><a href="large-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm">흑백대형복합기(A3)</a></li>
             </ul>
           </li>
-          <!-- 문서세단기 -->
-          <li class="relative group">
-            <a href="#" class="hover:text-blue-600 transition inline-block whitespace-nowrap">문서세단기</a>
-            <ul class="absolute left-0 top-full mt-2 w-60 bg-white shadow-lg rounded-md py-2
-                       opacity-0 invisible
-                       group-hover:opacity-100 group-hover:visible
-                       hover:opacity-100 hover:visible
-                       pointer-events-none group-hover:pointer-events-auto hover:pointer-events-auto
-                       transition duration-200">
-              <li>
-                <a href="small-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">문서세단기</a>
-              </li>
-            </ul>
-          </li>
-          <li><a href="event.html" class="hover:text-blue-600 transition whitespace-nowrap">이벤트</a></li>
-          <li><a href="installation.html" class="hover:text-blue-600 transition whitespace-nowrap">설치사례</a></li>
+          <li><a href="event.html" class="hover:text-blue-600 transition">이벤트</a></li>
+          <li><a href="installation.html" class="hover:text-blue-600 transition">설치사례</a></li>
         </ul>
       </nav>
-    
-      <!-- PC용 연락처 -->
-      <div class="hidden sm:block text-gray-600 font-semibold whitespace-nowrap">
-        <span>문의: 010-3794-8363 (평일 09:00~18:00)</span>
+      <!-- PC 연락처 -->
+      <div class="hidden sm:block text-gray-600 font-semibold">
+        문의: 010-3794-8363 (평일 09:00~18:00)
       </div>
-    
-      <!-- 모바일 햄버거 버튼 -->
-      <button id="menu-btn" class="sm:hidden focus:outline-none text-gray-800" aria-label="메뉴 열기" aria-expanded="false">
+      <!-- 모바일 햄버거 -->
+      <button id="menu-btn" class="sm:hidden focus:outline-none text-gray-800" aria-label="메뉴 열기">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
-
     <!-- 모바일 메뉴 -->
     <nav id="mobile-menu" class="sm:hidden fixed top-0 left-0 w-full h-full bg-white z-40 transform -translate-x-full transition-transform duration-300">
       <div class="px-6 py-8">
         <button id="menu-close-btn" class="mb-8 text-gray-800 focus:outline-none">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
-
         <ul class="space-y-6 text-lg font-bold text-gray-800">
-          <li><a href="index.html" class="block">홈</a></li>
-          <li><a href="small-color.html" class="block">소형컬러복합기 (A4)</a></li>
-          <li><a href="large-color.html" class="block">대형컬러복합기 (A4)</a></li>
-          <li><a href="small-bw.html" class="block">소형흑백복합기 (A3)</a></li>
-          <li><a href="large-bw.html" class="block">대형흑백복합기 (A3)</a></li>
-          <li><a href="event.html" class="block">이벤트</a></li>
-          <li><a href="installation.html" class="block">설치사례</a></li>
-          <li class="mt-6 text-gray-600 font-semibold whitespace-nowrap">문의: 010-3794-8363 (평일 09:00~18:00)</li>
+          <li><a href="index.html">홈</a></li>
+          <li><a href="ink-small-color.html">소형컬러복합기 (A4)</a></li>
+          <li><a href="ink-large-color.html">대형컬러복합기 (A3)</a></li>
+          <li><a href="small-bw.html">소형흑백복합기 (A4)</a></li>
+          <li><a href="large-bw.html">대형흑백복합기 (A3)</a></li>
+          <li><a href="event.html">이벤트</a></li>
+          <li><a href="installation.html">설치사례</a></li>
+          <li class="mt-6 text-gray-600 font-semibold">문의: 010-3794-8363 (평일 09:00~18:00)</li>
         </ul>
       </div>
     </nav>
-
     <script>
       const menuBtn = document.getElementById('menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
-      const menuCloseBtn = document.getElementById('menu-close-btn');
-
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.remove('-translate-x-full');
-      });
-      menuCloseBtn.addEventListener('click', () => {
-        mobileMenu.classList.add('-translate-x-full');
-      });
+      const closeBtn = document.getElementById('menu-close-btn');
+      menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+      closeBtn.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
     </script>
   </header>
-  <main class="flex-1 max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-10" id="product-detail">
-    <!-- 제품 상세내용은 JavaScript로 삽입 -->
-  </main>
 
+  <!-- MAIN: 제품 상세 -->
+  <main class="flex-1 max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-10">
+    <!-- 왼쪽: 이미지 갤러리 -->
+    <div>
+      <!-- ① id="main-image" -->
+      <img
+        id="main-image"
+        src="images/HP9010.jpg"
+        alt="HP9010 이미지"
+        class="rounded-lg border"
+      />
+
+      <div class="mt-4 flex space-x-4">
+        <!-- ② class="thumb" -->
+        <img
+          src="images/HP9010.jpg"
+          alt="썸네일1"
+          class="w-24 border cursor-pointer thumb"
+        />
+        <img
+          src="images/Thumbnail-HP9010_1.png"
+          alt="썸네일2"
+          class="w-24 border cursor-pointer thumb"
+        />
+      </div>
+    </div> 
+    <script>
+      document.querySelectorAll('.thumb').forEach(el => {
+        el.addEventListener('click', () => {
+          document.getElementById('main-image').src = el.src;
+        });
+      });
+    </script>
+
+    <!-- 오른쪽: 상세 정보 박스 -->
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+      <!-- 타이틀 & 뱃지 -->
+      <h2 class="text-2xl font-bold">HP OfficeJet Pro 9010 잉크젯 칼라 복합기 렌탈 36개월 약정</h2>
+      <div class="flex flex-wrap gap-2 mt-2">
+        <span class="px-2 py-1 bg-blue-500 text-white text-sm rounded-full">신제품</span>
+        <span class="px-2 py-1 bg-red-500 text-white text-sm rounded-full">컬러</span>
+        <span class="px-2 py-1 bg-green-500 text-white text-sm rounded-full">무상AS</span>
+        <span class="px-2 py-1 bg-yellow-400 text-gray-800 text-sm rounded-full">토너무료</span>
+      </div>
+      <p class="mt-3 text-gray-600">컬러 출력전용, A4, 자동양면인쇄</p>
+
+      <!-- 정보 테이블 -->
+      <table class="w-full mt-6 table-auto border-collapse text-left">
+        <tbody>
+          <tr class="border-t">
+            <th class="px-4 py-3 bg-gray-50 w-1/3">모델</th>
+            <td class="px-4 py-3">HP OfficeJet Pro 9010 잉크젯 칼라 복합기</td>
+          </tr>
+          <tr class="border-t">
+            <th class="px-4 py-3 bg-gray-50">월 렌탈료</th>
+            <td class="px-4 py-3">40,000원 <span class="text-sm text-gray-500">(36개월 기준 총 렌탈료 1,260,000원)</span></td>
+          </tr>
+          <tr class="border-t">
+            <th class="px-4 py-3 bg-gray-50">렌탈 보증료</th>
+            <td class="px-4 py-3">100,000원</td>
+          </tr>
+          <tr class="border-t">
+            <th class="px-4 py-3 bg-gray-50">기본 약정매수</th>
+            <td class="px-4 py-3">월 흑백 1,000매 + 컬러 100매</td>
+          </tr>
+          <tr class="border-t">
+            <th class="px-4 py-3 bg-gray-50">약정매수 초과시</th>
+            <td class="px-4 py-3">1매당 흑백 10원, 컬러 100원 (A4 단면 기준)</td>
+          </tr>
+          <tr class="border-t">
+            <th class="px-4 py-3 bg-gray-50">약정 기간</th>
+            <td class="px-4 py-3">24개월 / 32개월 (선택 가능)
+            </td>
+          </tr>
+          <tr class="border-t">
+            <th class="px-4 py-3 bg-gray-50">서비스</th>
+            <td class="px-4 py-3">배송 및 설치 무료, 토너 및 부품 무상 지원</td>
+          </tr>
+          <tr class="border-t">
+            <th class="px-4 py-3 bg-gray-50">참고</th>
+            <td class="px-4 py-3">월 렌탈료 VAT 별도</td>
+          </tr>
+          <tr class="border-t">
+            <th class="px-4 py-3 bg-gray-50">배송비</th>
+            <td class="px-4 py-3">판매자 지정 배송</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 총 금액 -->
+      <div class="mt-6 flex items-center justify-between">
+        <div></div>
+        <div class="text-right">
+          <span class="text-gray-600 mr-2">총 금액</span>
+          <span class="text-3xl font-extrabold text-teal-600">35,000원</span>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- 상세 설명 -->
+<section
+  id="product-detail-info"
+  class="fade-section px-6 py-12 max-w-7xl mx-auto"
+>
+  <!-- 타이틀 -->
+  <div class="inline-block bg-gray-700 text-white px-4 py-2 rounded-t">
+    상품 상세정보
+  </div>
+
+  <!-- 내용 컨테이너 -->
+  <div class="border-t border-gray-300 bg-white p-6 rounded-b-lg shadow space-y-8">
+    <!-- 1) 상세 이미지 -->
+    <!-- 2) 기술 사양 테이블 -->
+    <div class="overflow-x-auto">
+ <table class="w-full table-auto border-collapse text-sm">
+      <tbody>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50 w-1/3">프린트 카트리지/병, 개수</th>
+          <td class="px-4 py-2">4 (검정, 시안, 마젠타, 노랑 각 1개)</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">흑백 인쇄 속도</th>
+          <td class="px-4 py-2">ISO 레이저 비교 가능, 전문 모드 최대 22ppm, 일반 사무실 모드 최대 32ppm [5]</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">컬러 인쇄 속도</th>
+          <td class="px-4 py-2">ISO 레이저 비교 가능, 전문 모드 최대 18ppm, 일반 사무실 모드 최대 32ppm [5]</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">컬러 인쇄 속도 (초안, 10×15 사진)</th>
+          <td class="px-4 py-2">최대 39초 [5]</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">첫 페이지 출력(준비)</th>
+          <td class="px-4 py-2">검은: 9초 고속 [6]</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">흑백 인쇄 품질 (최상)</th>
+          <td class="px-4 py-2">검은: 1200×1200 렌더링 dpi<br>색깔: 최대 4800×1200 최적화 dpi (HP 고급 인화지, 1200×1200 입력 dpi 조건)</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">작업량 (월간, A4)</th>
+          <td class="px-4 py-2">최대 25,000페이지 [7] (듀티 사이클 정의 참조)</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">권장 월별 페이지 양</th>
+          <td class="px-4 py-2">최대 1,500페이지</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">컬러 인쇄 품질 (최상)</th>
+          <td class="px-4 py-2">최대 4800×1200 최적화 dpi (HP 고급 인화지, 1200×1200 입력 dpi 조건)</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">인쇄 기술</th>
+          <td class="px-4 py-2">HP Thermal Inkjet</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">프린터 드라이버 포함</th>
+          <td class="px-4 py-2">HP PCL3 GUI</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">프로세서 속도</th>
+          <td class="px-4 py-2">1.2 GHz</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">인쇄 언어</th>
+          <td class="px-4 py-2">HP PCL3 GUI</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">지원되는 용지 크기</th>
+          <td class="px-4 py-2">
+            A4, A5, A6, B5(JIS), Card(A4, Hagaki, Ofuku Hagaki)<br>
+            Photo(13×18 cm, 10×15 cm)<br>
+            Envelope(A2, C5, C6, DL, Chou #3, Chou #4)<br>
+            8.5×13 인치
+          </td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">용지 취급 입력 (기본)</th>
+          <td class="px-4 py-2">250매 입력 용지함; 35매 ADF</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">용지 취급 출력 (기본)</th>
+          <td class="px-4 py-2">60매 출력 용지함</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">양면 인쇄</th>
+          <td class="px-4 py-2">자동 (표준)</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">최대 출력 용량 (봉투)</th>
+          <td class="px-4 py-2">봉투 최대 30매</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">경계선 없는 인쇄</th>
+          <td class="px-4 py-2">
+            예 (인화지만 해당)<br>
+            최대 21.59×27.94 cm (US 레터), 210×297 mm (A4)
+          </td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">용지 유형</th>
+          <td class="px-4 py-2">
+            일반 용지, HP 인화지, HP 무광택 브로슈어/전문가용 용지,<br>
+            HP 무광택 프레젠테이션 용지, HP 광택 브로슈어/전문가용 용지,<br>
+            기타 포토/무광택/광택 잉크젯 용지, 두꺼운 일반 용지,<br>
+            경량지/재활용 용지, HP 3중 접지 브로슈어 용지, 광택지
+          </td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">용지 무게, 권장</th>
+          <td class="px-4 py-2">
+            일반 용지: 60–105 g/m²<br>
+            사진: 220–280 g/m²<br>
+            봉투: 75–90 g/m²<br>
+            카드: 163–200 g/m²
+          </td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">용지 무게, 지원</th>
+          <td class="px-4 py-2">
+            일반 용지: 60–105 g/m²<br>
+            사진: 220–280 g/m²<br>
+            봉투: 75–90 g/m²<br>
+            카드: 163–200 g/m²
+          </td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">모바일 인쇄 기능</th>
+          <td class="px-4 py-2">
+            Chrome OS, HP Smart 앱, Apple AirPrint™,<br>
+            Wi-Fi® Direct Printing, Mopria™ 인증 [4]
+          </td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">무선 기능</th>
+          <td class="px-4 py-2">내장 Wi-Fi 802.11a/b/g/n</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">연결 (기본)</th>
+          <td class="px-4 py-2">
+            USB 2.0 ×1, 호스트 USB ×1, 이더넷 ×1,<br>
+            무선 802.11a/b/g/n ×1, RJ-11 모뎀 포트 ×2
+          </td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">연결성 (옵션)</th>
+          <td class="px-4 py-2">없음</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">시스템 최소 요구 사항</th>
+          <td class="px-4 py-2">
+            Windows 10/8.1/8/7: 1 GHz 프로세서, 2 GB HD 여유, USB, 인터넷<br>
+            Mac OS X v10.11 이상: 1.5 GB HD, 인터넷
+          </td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">호환 운영 체제</th>
+          <td class="px-4 py-2">
+            Windows 11/10/8/7/Server, Chrome OS<br>
+            (Windows XP/Vista 미지원)
+          </td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">메모리 (표준/최대)</th>
+          <td class="px-4 py-2">512 MB / 512 MB</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">최소 크기 (W×D×H)</th>
+          <td class="px-4 py-2">439.3×342.5×278 mm</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">제품 포장 크기 (W×D×H)</th>
+          <td class="px-4 py-2">497×325×409 mm</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">팔레트 크기 (W×D×H)</th>
+          <td class="px-4 py-2">
+            AMS: 1220×1014×2584 mm;<br>
+            EMEA: 1200×1000×2200 mm;<br>
+            AP: 1219×1016×2197 mm
+          </td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">무게</th>
+          <td class="px-4 py-2">9.29 kg</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">제품 포장 무게</th>
+          <td class="px-4 py-2">11.02 kg</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">팔레트 무게</th>
+          <td class="px-4 py-2">AMS: 497 kg; EMEA/AP: 418 kg</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">팔레트 당 수량</th>
+          <td class="px-4 py-2">AMS: 42; EMEA: 35; AP: 35</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">팔레트 레이어 수</th>
+          <td class="px-4 py-2">AMS: 6; EMEA/AP: 5</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">케이블 포함</th>
+          <td class="px-4 py-2">없음 (USB·전화 코드 별도 구매)</td>
+        </tr>
+        <tr class="border-t">
+          <th class="px-4 py-2 bg-gray-50">제조업체 보증</th>
+          <td class="px-4 py-2">
+            1년 제한 하드웨어 보증;<br>
+            24시간·주 7일 웹 지원;<br>
+            영업시간 전화 지원
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+        <img 
+      src="images/HP9010사양.jpg" 
+      alt="HP OfficeJet Pro 9010 상세 이미지" 
+      class="w-full rounded-md object-contain"
+    />
+  </div>
+</section>
+  <!-- FOOTER -->
   <footer class="bg-gray-800 text-white py-8 mt-20">
     <div class="max-w-6xl mx-auto px-6 text-center text-sm space-y-2">
       <p>(주) 미래OA하이테크 | 대표: 김성식</p>
@@ -162,69 +445,22 @@
       <p class="text-gray-400 text-xs">Copyright © 2025 미래OA하이테크. All rights reserved.</p>
     </div>
   </footer>
-
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get('id');
+  document.addEventListener('DOMContentLoaded', () => {
+    const target = document.getElementById('product-detail-info');
 
-    const productData = {
-      "HP9010": {
-        name: "HP OfficeJet Pro 9010 잉크젯 칼라 복합기 렌탈",
-        price: "60,000원",
-        desc: "[기본메뉴+월] 흑백 : 2,000매 | 컬러 300매 제공",
-        image: "images/HP9010.jpg"
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // 한 번만 실행하려면 추가
+        }
       },
-      "HP8710": {
-        name: "HP OfficeJet Pro 8710 잉크젯 칼라 복합기",
-        price: "49,000원",
-        desc: "[기본메뉴+월] 흑백 : 1,000매 | 컬러 300매 제공",
-        image: "images/HP8710.jpg"
-      }
-    };
+      { threshold: 0.1 } // 화면에 10% 보일 때
+    );
 
-    const product = productData[id];
-
-    if (product) {
-      document.getElementById('product-detail').innerHTML = `
-        <div>
-          <img src="${product.image}" alt="제품 이미지" class="rounded-lg border" />
-          <div class="mt-4 flex space-x-4">
-            <img src="${product.image}" class="w-24 border cursor-pointer" />
-            <img src="${product.image}" class="w-24 border cursor-pointer" />
-          </div>
-        </div>
-        <div>
-          <div class="mb-2 inline-block text-sm text-white bg-red-600 px-2 py-1 rounded">인기</div>
-          <h1 class="product-title mb-2">${product.name}</h1>
-          <p class="text-sm text-gray-500 mb-1">${product.desc}</p>
-          <p class="product-price mb-2">${product.price}</p>
-          <ul class="text-sm text-gray-600 mb-4 list-disc list-inside">
-            <li>렌탈보증금: 보증금 20만원 (계약만료 100% 반환)</li>
-            <li>주문수량/렌탈세액: 24개월 조건일 경우 적용 (VAT 별도)</li>
-          </ul>
-          <div class="space-y-4 product-detail-table">
-            <div>
-              <label class="block text-sm font-medium mb-1">약정기간</label>
-              <select><option>선택해 주세요</option></select>
-            </div>
-            <div>
-              <label class="block text-sm font-medium mb-1">팩스킷</label>
-              <select><option>선택해 주세요</option></select>
-            </div>
-            <div>
-              <label class="block text-sm font-medium mb-1">기본매수</label>
-              <select><option>선택해 주세요</option></select>
-            </div>
-          </div>
-          <p class="mt-6 text-right text-sm">총 상품금액(수량): <span class="font-semibold">0 (0개)</span></p>
-          <button class="mt-4 w-full py-3 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded">
-            카카오톡 상담하기 (개인정보노출안됨)
-          </button>
-        </div>
-      `;
-    } else {
-      document.getElementById('product-detail').innerHTML = `<p class="text-center col-span-2 text-red-500">상품 정보를 찾을 수 없습니다.</p>`;
-    }
-  </script>
+    observer.observe(target);
+  });
+</script>
 </body>
 </html>

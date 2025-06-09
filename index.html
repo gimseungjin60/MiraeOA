@@ -78,8 +78,17 @@
     #map {
       width: 100%;
       height: 400px;
-        min-height: 400px;  /* 💡 반드시 최소 높이 지정 */
-
+      min-height: 400px;
+    }
+    /* ✅ 드롭다운 문제 해결용 수정 */
+    nav ul li.relative:hover > ul,
+    nav ul li.relative ul:hover {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+    nav ul li.relative ul {
+      margin-top: 0 !important; /* ✅ mt-2 제거 */
     }
   </style>
 </head>
@@ -122,33 +131,33 @@
                        pointer-events-none group-hover:pointer-events-auto hover:pointer-events-auto
                        transition duration-200">
               <li>
-                <a href="small-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러소형복합기(A4)</a>
+                <a href="ink-small-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러소형복합기(A4)</a>
               </li>
               <li>
-                <a href="large-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러대형복합기(A3)</a>
+                <a href="ink-large-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러대형복합기(A3)</a>
               </li>
             </ul>
           </li>
           <!-- 레이저복합기 -->
           <li class="relative group">
             <a href="#" class="hover:text-blue-600 transition inline-block whitespace-nowrap">레이저복합기</a>
-            <ul class="absolute left-0 top-full mt-2 w-60 bg-white shadow-lg rounded-md py-2
+            <ul class="absolute left-0 top-full w-60 bg-white shadow-lg rounded-md py-2
                        opacity-0 invisible
                        group-hover:opacity-100 group-hover:visible
                        hover:opacity-100 hover:visible
                        pointer-events-none group-hover:pointer-events-auto hover:pointer-events-auto
                        transition duration-200">
               <li>
-                <a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러소형복합기(A4)</a>
+                <a href="lazer-small-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러소형복합기(A4)</a>
               </li>
               <li>
-                <a href="large-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러대형복합기(A3)</a>
+                <a href="lazer-large-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러대형복합기(A3)</a>
               </li>
               <li>
-                <a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">흑백소형복합기(A4)</a>
+                <a href="lazer-small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">흑백소형복합기(A4)</a>
               </li>
               <li>
-                <a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">흑백대형복합기(A3)</a>
+                <a href="lazer-large-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">흑백대형복합기(A3)</a>
               </li>
             </ul>
           </li>
