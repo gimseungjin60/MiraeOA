@@ -33,9 +33,11 @@
     html, body {
       width: 100%;
       height: 100%;
+      display: flex;
+      flex-direction: column; /* 수직 정렬 */
       font-family: 'Noto Sans KR', sans-serif;
-      background-color: #f9fafb; /* 연한 회색 */
-      color: #1f2937; /* 기본 텍스트 색: gray-800 */
+      background-color: #f9fafb;
+      color: #1f2937;
       -webkit-text-size-adjust: 100%;
     }
     a {
@@ -62,7 +64,9 @@
       max-width: 1200px;
       margin: 20px auto;
       padding: 0 20px;
+      flex: 1; /* 남는 공간 차지 */
     }
+
     /* 빵부스러기(브레드크럼) */
     .breadcrumbs {
       font-size: 13px;
@@ -164,12 +168,12 @@
     }
     /* 기능 아이콘 리스트 (좌측 아래) */
     .product-card .feature-icons {
-      position: absolute;
-      bottom: 8px;
-      left: 8px;
+      position: static;         /* ✅ absolute 제거 */
       display: flex;
-      flex-direction: column;
+      justify-content: flex-start;
       gap: 6px;
+      margin: 10px 0;           /* 위/아래 여백 */
+      padding: 0;
     }
     .product-card .feature-icons img {
       width: 24px;
@@ -480,152 +484,110 @@
 
     <!-- 상품 리스트 (그리드 4열) -->
     <div class="product-list">
-      <!-- ===== 상품 카드 1 ===== -->
-      <div class="product-card" data-price="60000" data-popularity="80" data-date="20250215">
-        <!-- 상단 이미지 및 배너 -->
-        <div class="img-container">
-          <img 
-            src="images/HP9010.jpg" 
-            alt="HP OfficeJet Pro 9010 잉크젯 칼라 복합기" 
-            class="main-img"
-          />
-          <div class="feature-icons">
-            <img src="images/icon-a3.png" alt="A3 아이콘" />
-            <img src="images/icon-print.png" alt="인쇄 아이콘" />
-            <img src="images/icon-copy.png" alt="복사 아이콘" />
-            <img src="images/icon-scan.png" alt="스캔 아이콘" />
-            <img src="images/icon-fax.png" alt="팩스 아이콘" />
-          </div>
+    <!-- ===== 상품 카드 1 ===== -->
+    <div class="product-card" data-id="HP9010" data-price="60000" data-popularity="80" data-date="20250215">
+      <div class="img-container">
+        <img src="images/HP9010.jpg" alt="HP OfficeJet Pro 9010 잉크젯 칼라 복합기" class="main-img" />
+      </div>
+      <div class="info-box">
+        <div class="feature-icons">
+          <img src="images/icon-a3.png" alt="A3 아이콘" />
+          <img src="images/icon-print.png" alt="인쇄 아이콘" />
+          <img src="images/icon-copy.png" alt="복사 아이콘" />
+          <img src="images/icon-scan.png" alt="스캔 아이콘" />
+          <img src="images/icon-fax.png" alt="팩스 아이콘" />
         </div>
-        <div class="info-box">
-          <div class="title">
-            HP OfficeJet Pro 9010 잉크젯 칼라 복합기 렌탈
-          </div>
-          <div class="subtitle">
-            [기본메뉴+월] 흑백 : 2,000매 | 컬러 300매 제공
-          </div>
-          <div class="price">
-            60,000원
-          </div>
-          <div class="label-box">
-            <span class="sale">렌탈제품</span>
-            <span class="hot">BEST</span>
-          </div>
-          <div class="btn-group">
-            <button class="btn-rental">렌탈제품</button>
-            <button class="btn-quick">퀵스무쌍</button>
-          </div>
+        <div class="title">HP OfficeJet Pro 9010 잉크젯 칼라 복합기 렌탈</div>
+        <div class="subtitle">[기본메뉴+월] 흑백 : 2,000매 | 컬러 300매 제공</div>
+        <div class="price">60,000원</div>
+        <div class="label-box">
+          <span class="sale">렌탈제품</span>
+          <span class="hot">BEST</span>
+        </div>
+        <div class="btn-group">
+          <button class="btn-rental">렌탈제품</button>
+          <button class="btn-quick">퀵스무쌍</button>
         </div>
       </div>
-      <!-- ===== //상품 카드 1 ===== -->
+    </div>
 
-      <!-- ===== 상품 카드 2 ===== -->
-      <div class="product-card" data-price="49000" data-popularity="95" data-date="20250310">
-        <div class="img-container">
-          <img 
-            src="images/HP8710.jpg" 
-            alt="HP OfficeJet Pro 8710 잉크젯 칼라 복합기" 
-            class="main-img"
-          />
-          <div class="feature-icons">
-            <img src="images/icon-a3.png" alt="A3 아이콘" />
-            <img src="images/icon-print.png" alt="인쇄 아이콘" />
-            <img src="images/icon-copy.png" alt="복사 아이콘" />
-            <img src="images/icon-scan.png" alt="스캔 아이콘" />
-            <img src="images/icon-fax.png" alt="팩스 아이콘" />
-          </div>
+    <!-- ===== 상품 카드 2 ===== -->
+    <div class="product-card" data-id="HP8710" data-price="49000" data-popularity="95" data-date="20250310">
+      <div class="img-container">
+        <img src="images/HP8710.jpg" alt="HP OfficeJet Pro 8710 잉크젯 칼라 복합기" class="main-img" />
+      </div>
+      <div class="info-box">
+        <div class="feature-icons">
+          <img src="images/icon-a3.png" alt="A3 아이콘" />
+          <img src="images/icon-print.png" alt="인쇄 아이콘" />
+          <img src="images/icon-copy.png" alt="복사 아이콘" />
+          <img src="images/icon-scan.png" alt="스캔 아이콘" />
+          <img src="images/icon-fax.png" alt="팩스 아이콘" />
         </div>
-        <div class="info-box">
-          <div class="title">
-            HP OfficeJet Pro 8710 잉크젯 칼라 복합기
-          </div>
-          <div class="subtitle">
-            [기본메뉴+월] 흑백 : 1,000매 | 컬러 300매 제공
-          </div>
-          <div class="price">
-            49,000원
-          </div>
-          <div class="label-box">
-            <span class="hot">BEST</span>
-          </div>
-          <div class="btn-group">
-            <button class="btn-rental">렌탈제품</button>
-          </div>
+        <div class="title">HP OfficeJet Pro 8710 잉크젯 칼라 복합기</div>
+        <div class="subtitle">[기본메뉴+월] 흑백 : 1,000매 | 컬러 300매 제공</div>
+        <div class="price">49,000원</div>
+        <div class="label-box">
+          <span class="hot">BEST</span>
+        </div>
+        <div class="btn-group">
+          <button class="btn-rental">렌탈제품</button>
         </div>
       </div>
-      <!-- ===== //상품 카드 2 ===== -->
+    </div>
 
-      <!-- ===== 상품 카드 3 ===== -->
-      <div class="product-card" data-price="60000" data-popularity="70" data-date="20250105">
-        <div class="img-container">
-          <img 
-            src="images/GX7092.jpg" 
-            alt="Canon MAXIFY 정품 무한 GX7092 (무한잉크)" 
-            class="main-img"
-          />
-          <div class="feature-icons">
-            <img src="images/icon-a3.png" alt="A3 아이콘" />
-            <img src="images/icon-print.png" alt="인쇄 아이콘" />
-            <img src="images/icon-copy.png" alt="복사 아이콘" />
-            <img src="images/icon-scan.png" alt="스캔 아이콘" />
-            <img src="images/icon-fax.png" alt="팩스 아이콘" />
-          </div>
+    <!-- ===== 상품 카드 3 ===== -->
+    <div class="product-card" data-id="GX7092" data-price="60000" data-popularity="70" data-date="20250105">
+      <div class="img-container">
+        <img src="images/GX7092.jpg" alt="Canon MAXIFY 정품 무한 GX7092 (무한잉크)" class="main-img" />
+      </div>
+      <div class="info-box">
+        <div class="feature-icons">
+          <img src="images/icon-a3.png" alt="A3 아이콘" />
+          <img src="images/icon-print.png" alt="인쇄 아이콘" />
+          <img src="images/icon-copy.png" alt="복사 아이콘" />
+          <img src="images/icon-scan.png" alt="스캔 아이콘" />
+          <img src="images/icon-fax.png" alt="팩스 아이콘" />
         </div>
-        <div class="info-box">
-          <div class="title">
-            Canon MAXIFY 정품 무한 GX7092 (무한잉크)
-          </div>
-          <div class="subtitle">
-            [기본메뉴+월] 흑백 : 2,000매 | 컬러 400매 제공
-          </div>
-          <div class="price">
-            60,000원
-          </div>
-          <div class="label-box">
-            <span class="sale">렌탈제품</span>
-            <span class="new">신상품</span>
-          </div>
-          <div class="btn-group">
-            <button class="btn-rental">렌탈제품</button>
-          </div>
+        <div class="title">Canon MAXIFY 정품 무한 GX7092 (무한잉크)</div>
+        <div class="subtitle">[기본메뉴+월] 흑백 : 2,000매 | 컬러 400매 제공</div>
+        <div class="price">60,000원</div>
+        <div class="label-box">
+          <span class="sale">렌탈제품</span>
+          <span class="new">신상품</span>
+        </div>
+        <div class="btn-group">
+          <button class="btn-rental">렌탈제품</button>
         </div>
       </div>
-      <!-- ===== //상품 카드 3 ===== -->
+    </div>
 
-      <!-- ===== 상품 카드 4 ===== -->
-      <div class="product-card" data-price="80000" data-popularity="60" data-date="20250220">
-        <div class="img-container">
-          <img 
-            src="images/GX6092.jpg" 
-            alt="Canon MAXIFY 정품 무한 GX6092 (무한잉크)" 
-            class="main-img"
-          />
-          <div class="feature-icons">
-            <img src="images/icon-a3.png" alt="A3 아이콘" />
-            <img src="images/icon-print.png" alt="인쇄 아이콘" />
-            <img src="images/icon-copy.png" alt="복사 아이콘" />
-            <img src="images/icon-scan.png" alt="스캔 아이콘" />
-            <img src="images/icon-fax.png" alt="팩스 아이콘" />
-          </div>
+    <!-- ===== 상품 카드 4 ===== -->
+    <div class="product-card" data-id="GX6092" data-price="80000" data-popularity="60" data-date="20250220">
+      <div class="img-container">
+        <img src="images/GX6092.jpg" alt="Canon MAXIFY 정품 무한 GX6092 (무한잉크)" class="main-img" />
+      </div>
+      <div class="info-box">
+        <div class="feature-icons">
+          <img src="images/icon-a3.png" alt="A3 아이콘" />
+          <img src="images/icon-print.png" alt="인쇄 아이콘" />
+          <img src="images/icon-copy.png" alt="복사 아이콘" />
+          <img src="images/icon-scan.png" alt="스캔 아이콘" />
+          <img src="images/icon-fax.png" alt="팩스 아이콘" />
         </div>
-        <div class="info-box">
-          <div class="title">
-            Canon MAXIFY 정품 무한 GX6092 (무한잉크)
-          </div>
-          <div class="subtitle">
-            [기본메뉴+월] 흑백 : 2,000매 | 컬러 300매 제공
-          </div>
-          <div class="price">
-            80,000원
-          </div>
-          <div class="label-box">
-            <span class="sale">렌탈제품</span>
-          </div>
-          <div class="btn-group">
-            <button class="btn-rental">렌탈제품</button>
-          </div>
+        <div class="title">Canon MAXIFY 정품 무한 GX6092 (무한잉크)</div>
+        <div class="subtitle">[기본메뉴+월] 흑백 : 2,000매 | 컬러 300매 제공</div>
+        <div class="price">80,000원</div>
+        <div class="label-box">
+          <span class="sale">렌탈제품</span>
+        </div>
+        <div class="btn-group">
+          <button class="btn-rental">렌탈제품</button>
         </div>
       </div>
+    </div>
+  </div>
+
       <!-- ===== //상품 카드 4 ===== -->
 
       <!-- ===== 상품 카드 5 ===== -->
@@ -705,16 +667,26 @@
   <!-- =============================================
        FOOTER
   ============================================== -->
-  <footer>
-    <div class="footer-container">
+  <footer class="bg-gray-800 text-white py-8 mt-20">
+    <div class="max-w-6xl mx-auto px-6 text-center text-sm space-y-2">
       <p>(주) 미래OA하이테크 | 대표: 김성식</p>
       <p>사업자등록번호: 123-45-67890 | 대표번호: 010-3794-8363</p>
       <p>주소: 경기도 시흥시 조남동 719-1</p>
-      <p style="margin-top:12px; font-size:12px; color: #4b5563;">
-        Copyright © 2025 미래OA하이테크. All rights reserved.
-      </p>
+      <p class="text-gray-400 text-xs">Copyright © 2025 미래OA하이테크. All rights reserved.</p>
     </div>
   </footer>
+  <script>
+    const productCards = document.querySelectorAll('.product-card');
+
+    productCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.dataset.id;
+        if (id) {
+          window.location.href = `product-detail.html?id=${id}`;
+        }
+      });
+    });
+  </script>
 
   <!-- =============================================
        정렬 기능을 위한 JavaScript

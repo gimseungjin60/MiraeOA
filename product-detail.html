@@ -1,425 +1,230 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>상품 상세 - 미래OA하이테크</title>
-
-  <!-- Tailwind CSS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>제품 상세페이지 | 미래OA하이테크</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Custom Styles -->
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f9fafb;
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #ffffff;
+      color: #1f2937;
     }
-    .product-image {
+    .product-title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .product-price {
+      color: #dc2626;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .product-detail-table select {
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      padding: 8px;
       width: 100%;
-      max-width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 12px;
-      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
     }
-    .tag {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: white;
-      margin-right: 0.5rem;
-      margin-bottom: 0.25rem;
-    }
-    .tag-color { background-color: #22c55e; }    /* green-500 */
-    .tag-purple { background-color: #7c3aed; }  /* purple-700 */
-    .tag-pink { background-color: #db2777; }    /* pink-600 */
-    .tag-blue { background-color: #3b82f6; }    /* blue-500 */
   </style>
 </head>
-<body>
-
-  <main class="max-w-5xl mx-auto bg-white rounded-lg shadow-lg p-8">
-    <button id="backBtn" class="mb-6 text-blue-600 hover:underline">&larr; 목록으로 돌아가기</button>
-
-    <section id="product-detail" class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-      <div class="w-full max-w-md mx-auto">
-        <img id="productImage" src="" alt="상품 이미지" class="product-image" />
+<body class="min-h-screen flex flex-col">
+<header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+      <!-- 로고 & 홈 링크 -->
+      <a href="index.html" class="flex items-center space-x-3">
+        <img src="images/oalogo.jpg" alt="회사 로고" class="h-20" />
+      </a>
+      
+      <!-- PC용 네비게이션 -->
+      <nav class="hidden sm:block">
+        <ul class="flex space-x-10 text-base font-bold text-gray-800">
+          <li>
+            <a href="index.html" class="hover:text-blue-600 transition whitespace-nowrap">홈</a>
+          </li>
+          <!-- 잉크젯복합기 -->
+          <li class="relative group">
+            <a href="#" class="hover:text-blue-600 transition inline-block whitespace-nowrap">잉크젯복합기</a>
+            <ul class="absolute left-0 top-full mt-2 w-60 bg-white shadow-lg rounded-md py-2
+                       opacity-0 invisible
+                       group-hover:opacity-100 group-hover:visible
+                       hover:opacity-100 hover:visible
+                       pointer-events-none group-hover:pointer-events-auto hover:pointer-events-auto
+                       transition duration-200">
+              <li>
+                <a href="small-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러소형복합기(A4)</a>
+              </li>
+              <li>
+                <a href="large-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러대형복합기(A3)</a>
+              </li>
+            </ul>
+          </li>
+          <!-- 레이저복합기 -->
+          <li class="relative group">
+            <a href="#" class="hover:text-blue-600 transition inline-block whitespace-nowrap">레이저복합기</a>
+            <ul class="absolute left-0 top-full mt-2 w-60 bg-white shadow-lg rounded-md py-2
+                       opacity-0 invisible
+                       group-hover:opacity-100 group-hover:visible
+                       hover:opacity-100 hover:visible
+                       pointer-events-none group-hover:pointer-events-auto hover:pointer-events-auto
+                       transition duration-200">
+              <li>
+                <a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러소형복합기(A4)</a>
+              </li>
+              <li>
+                <a href="large-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">컬러대형복합기(A3)</a>
+              </li>
+              <li>
+                <a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">흑백소형복합기(A4)</a>
+              </li>
+              <li>
+                <a href="small-bw.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">흑백대형복합기(A3)</a>
+              </li>
+            </ul>
+          </li>
+          <!-- 문서세단기 -->
+          <li class="relative group">
+            <a href="#" class="hover:text-blue-600 transition inline-block whitespace-nowrap">문서세단기</a>
+            <ul class="absolute left-0 top-full mt-2 w-60 bg-white shadow-lg rounded-md py-2
+                       opacity-0 invisible
+                       group-hover:opacity-100 group-hover:visible
+                       hover:opacity-100 hover:visible
+                       pointer-events-none group-hover:pointer-events-auto hover:pointer-events-auto
+                       transition duration-200">
+              <li>
+                <a href="small-color.html" class="block px-4 py-3 hover:bg-gray-100 text-sm font-medium whitespace-nowrap">문서세단기</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="event.html" class="hover:text-blue-600 transition whitespace-nowrap">이벤트</a></li>
+          <li><a href="installation.html" class="hover:text-blue-600 transition whitespace-nowrap">설치사례</a></li>
+        </ul>
+      </nav>
+    
+      <!-- PC용 연락처 -->
+      <div class="hidden sm:block text-gray-600 font-semibold whitespace-nowrap">
+        <span>문의: 010-3794-8363 (평일 09:00~18:00)</span>
       </div>
-      <div>
-        <h1 id="productTitle" class="text-3xl font-bold mb-4 text-gray-800"></h1>
-        <div id="productTags" class="mb-4 flex flex-wrap"></div>
-        <p id="productModel" class="text-gray-600 mb-2"></p>
-        <p id="productSpeed" class="text-gray-600 mb-4"></p>
-        <p id="productPrice" class="text-2xl font-extrabold text-red-600"></p>
+    
+      <!-- 모바일 햄버거 버튼 -->
+      <button id="menu-btn" class="sm:hidden focus:outline-none text-gray-800" aria-label="메뉴 열기" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- 모바일 메뉴 -->
+    <nav id="mobile-menu" class="sm:hidden fixed top-0 left-0 w-full h-full bg-white z-40 transform -translate-x-full transition-transform duration-300">
+      <div class="px-6 py-8">
+        <button id="menu-close-btn" class="mb-8 text-gray-800 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <ul class="space-y-6 text-lg font-bold text-gray-800">
+          <li><a href="index.html" class="block">홈</a></li>
+          <li><a href="small-color.html" class="block">소형컬러복합기 (A4)</a></li>
+          <li><a href="large-color.html" class="block">대형컬러복합기 (A4)</a></li>
+          <li><a href="small-bw.html" class="block">소형흑백복합기 (A3)</a></li>
+          <li><a href="large-bw.html" class="block">대형흑백복합기 (A3)</a></li>
+          <li><a href="event.html" class="block">이벤트</a></li>
+          <li><a href="installation.html" class="block">설치사례</a></li>
+          <li class="mt-6 text-gray-600 font-semibold whitespace-nowrap">문의: 010-3794-8363 (평일 09:00~18:00)</li>
+        </ul>
       </div>
-    </section>
+    </nav>
+
+    <script>
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuCloseBtn = document.getElementById('menu-close-btn');
+
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('-translate-x-full');
+      });
+      menuCloseBtn.addEventListener('click', () => {
+        mobileMenu.classList.add('-translate-x-full');
+      });
+    </script>
+  </header>
+  <main class="flex-1 max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-10" id="product-detail">
+    <!-- 제품 상세내용은 JavaScript로 삽입 -->
   </main>
 
-  <script>
-    const products = {
-      best1: {
-        title: "신도리코 컬러 레이저 복합기 D470",
-        image: "images/bw-printer.jpg",
-        tags: ["컬러", "추천", "BEST", "NEW"],
-        model: "모델명 : D470",
-        speed: "속도 25매 / 해상도 1200dpi",
-        price: "80,000원"
-      },
-      best2: {
-        title: "신도리코 컬러 레이저 복합기 D450",
-        image: "images/bw-printer1.jpg",
-        tags: ["컬러", "추천", "HOT"],
-        model: "모델명 : D450",
-        speed: "속도 25매 / 해상도 1200dpi",
-        price: "70,000원"
-      },
-      best3: {
-        title: "신도리코 컬러 레이저 복합기 D320",
-        image: "images/bw-printer2.jpg",
-        tags: ["컬러", "BEST", "HOT"],
-        model: "모델명 : D320",
-        speed: "속도 22매 / 해상도 1200dpi",
-        price: "60,000원"
-      },
-      best4: {
-        title: "신도리코 컬러 레이저 복합기 D420",
-        image: "images/bw-printer3.jpg",
-        tags: ["컬러", "특가"],
-        model: "모델명 : D420",
-        speed: "속도 25매 / 해상도 1200dpi",
-        price: "60,000원"
-      },
-      color1: {
-        title: "컬러 복합기 A",
-        image: "images/color-printer.jpg",
-        tags: ["컬러"],
-        model: "",
-        speed: "",
-        price: "월 50,000원"
-      },
-      color2: {
-        title: "컬러 복합기 B",
-        image: "images/color-printer.jpg",
-        tags: ["컬러"],
-        model: "",
-        speed: "",
-        price: "월 60,000원"
-      },
-      color3: {
-        title: "컬러 복합기 C",
-        image: "images/color-printer.jpg",
-        tags: ["컬러"],
-        model: "",
-        speed: "",
-        price: "월 55,000원"
-      },
-      color4: {
-        title: "컬러 복합기 D",
-        image: "images/color-printer.jpg",
-        tags: ["컬러"],
-        model: "",
-        speed: "",
-        price: "월 58,000원"
-      },
-      bw1: {
-        title: "흑백 복합기 A",
-        image: "images/bw-printer.jpg",
-        tags: ["흑백"],
-        model: "",
-        speed: "",
-        price: "월 30,000원"
-      },
-      bw2: {
-        title: "흑백 복합기 B",
-        image: "images/bw-printer.jpg",
-        tags: ["흑백"],
-        model: "",
-        speed: "",
-        price: "월 35,000원"
-      },
-      bw3: {
-        title: "흑백 복합기 C",
-        image: "images/bw-printer.jpg",
-        tags: ["흑백"],
-        model: "",
-        speed: "",
-        price: "월 32,000원"
-      },
-      bw4: {
-        title: "흑백 복합기 D",
-        image: "images/bw-printer.jpg",
-        tags: ["흑백"],
-        model: "",
-        speed: "",
-        price: "월 33,000원"
-      }
-    };
-
-    const tagColors = {
-      "컬러": "tag-color",
-      "추천": "tag-purple",
-      "BEST": "tag-blue",
-      "NEW": "tag-pink",
-      "HOT": "tag-pink",
-      "특가": "tag-blue",
-      "흑백": "tag-blue"
-    };
-
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
-    }
-
-    function showProductDetail(id) {
-      const product = products[id];
-      if (!product) {
-        alert("존재하지 않는 상품입니다.");
-        window.location.href = "index.html";
-        return;
-      }
-
-      document.getElementById("productTitle").textContent = product.title;
-      document.getElementById("productImage").src = product.image;
-      document.getElementById("productImage").alt = product.title;
-
-      const tagsContainer = document.getElementById("productTags");
-      tagsContainer.innerHTML = "";
-      product.tags.forEach(tag => {
-        const span = document.createElement("span");
-        span.textContent = tag;
-        span.className = "tag " + (tagColors[tag] || "tag-blue");
-        tagsContainer.appendChild(span);
-      });
-
-      document.getElementById("productModel").textContent = product.model;
-      document.getElementById("productSpeed").textContent = product.speed;
-      document.getElementById("productPrice").textContent = product.price;
-    }
-
-    document.getElementById("backBtn").addEventListener("click", () => {
-      window.history.back();
-    });
-
-    const productId = getQueryParam("id");
-    showProductDetail(productId);
-  </script>
-
-</body>
-</html>
-=======
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>상품 상세 - 미래OA하이테크</title>
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Custom Styles -->
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f9fafb;
-    }
-    .product-image {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 12px;
-      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-    }
-    .tag {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: white;
-      margin-right: 0.5rem;
-      margin-bottom: 0.25rem;
-    }
-    .tag-color { background-color: #22c55e; }    /* green-500 */
-    .tag-purple { background-color: #7c3aed; }  /* purple-700 */
-    .tag-pink { background-color: #db2777; }    /* pink-600 */
-    .tag-blue { background-color: #3b82f6; }    /* blue-500 */
-  </style>
-</head>
-<body>
-
-  <main class="max-w-5xl mx-auto bg-white rounded-lg shadow-lg p-8">
-    <button id="backBtn" class="mb-6 text-blue-600 hover:underline">&larr; 목록으로 돌아가기</button>
-
-    <section id="product-detail" class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-      <div class="w-full max-w-md mx-auto">
-        <img id="productImage" src="" alt="상품 이미지" class="product-image" />
-      </div>
-      <div>
-        <h1 id="productTitle" class="text-3xl font-bold mb-4 text-gray-800"></h1>
-        <div id="productTags" class="mb-4 flex flex-wrap"></div>
-        <p id="productModel" class="text-gray-600 mb-2"></p>
-        <p id="productSpeed" class="text-gray-600 mb-4"></p>
-        <p id="productPrice" class="text-2xl font-extrabold text-red-600"></p>
-      </div>
-    </section>
-  </main>
+  <footer class="bg-gray-800 text-white py-8 mt-20">
+    <div class="max-w-6xl mx-auto px-6 text-center text-sm space-y-2">
+      <p>(주) 미래OA하이테크 | 대표: 김성식</p>
+      <p>사업자등록번호: 123-45-67890 | 대표번호: 010-3794-8363</p>
+      <p>주소: 경기도 시흥시 조남동 719-1</p>
+      <p class="text-gray-400 text-xs">Copyright © 2025 미래OA하이테크. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script>
-    const products = {
-      best1: {
-        title: "신도리코 컬러 레이저 복합기 D470",
-        image: "images/bw-printer.jpg",
-        tags: ["컬러", "추천", "BEST", "NEW"],
-        model: "모델명 : D470",
-        speed: "속도 25매 / 해상도 1200dpi",
-        price: "80,000원"
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    const productData = {
+      "HP9010": {
+        name: "HP OfficeJet Pro 9010 잉크젯 칼라 복합기 렌탈",
+        price: "60,000원",
+        desc: "[기본메뉴+월] 흑백 : 2,000매 | 컬러 300매 제공",
+        image: "images/HP9010.jpg"
       },
-      best2: {
-        title: "신도리코 컬러 레이저 복합기 D450",
-        image: "images/bw-printer1.jpg",
-        tags: ["컬러", "추천", "HOT"],
-        model: "모델명 : D450",
-        speed: "속도 25매 / 해상도 1200dpi",
-        price: "70,000원"
-      },
-      best3: {
-        title: "신도리코 컬러 레이저 복합기 D320",
-        image: "images/bw-printer2.jpg",
-        tags: ["컬러", "BEST", "HOT"],
-        model: "모델명 : D320",
-        speed: "속도 22매 / 해상도 1200dpi",
-        price: "60,000원"
-      },
-      best4: {
-        title: "신도리코 컬러 레이저 복합기 D420",
-        image: "images/bw-printer3.jpg",
-        tags: ["컬러", "특가"],
-        model: "모델명 : D420",
-        speed: "속도 25매 / 해상도 1200dpi",
-        price: "60,000원"
-      },
-      color1: {
-        title: "컬러 복합기 A",
-        image: "images/color-printer.jpg",
-        tags: ["컬러"],
-        model: "",
-        speed: "",
-        price: "월 50,000원"
-      },
-      color2: {
-        title: "컬러 복합기 B",
-        image: "images/color-printer.jpg",
-        tags: ["컬러"],
-        model: "",
-        speed: "",
-        price: "월 60,000원"
-      },
-      color3: {
-        title: "컬러 복합기 C",
-        image: "images/color-printer.jpg",
-        tags: ["컬러"],
-        model: "",
-        speed: "",
-        price: "월 55,000원"
-      },
-      color4: {
-        title: "컬러 복합기 D",
-        image: "images/color-printer.jpg",
-        tags: ["컬러"],
-        model: "",
-        speed: "",
-        price: "월 58,000원"
-      },
-      bw1: {
-        title: "흑백 복합기 A",
-        image: "images/bw-printer.jpg",
-        tags: ["흑백"],
-        model: "",
-        speed: "",
-        price: "월 30,000원"
-      },
-      bw2: {
-        title: "흑백 복합기 B",
-        image: "images/bw-printer.jpg",
-        tags: ["흑백"],
-        model: "",
-        speed: "",
-        price: "월 35,000원"
-      },
-      bw3: {
-        title: "흑백 복합기 C",
-        image: "images/bw-printer.jpg",
-        tags: ["흑백"],
-        model: "",
-        speed: "",
-        price: "월 32,000원"
-      },
-      bw4: {
-        title: "흑백 복합기 D",
-        image: "images/bw-printer.jpg",
-        tags: ["흑백"],
-        model: "",
-        speed: "",
-        price: "월 33,000원"
+      "HP8710": {
+        name: "HP OfficeJet Pro 8710 잉크젯 칼라 복합기",
+        price: "49,000원",
+        desc: "[기본메뉴+월] 흑백 : 1,000매 | 컬러 300매 제공",
+        image: "images/HP8710.jpg"
       }
     };
 
-    const tagColors = {
-      "컬러": "tag-color",
-      "추천": "tag-purple",
-      "BEST": "tag-blue",
-      "NEW": "tag-pink",
-      "HOT": "tag-pink",
-      "특가": "tag-blue",
-      "흑백": "tag-blue"
-    };
+    const product = productData[id];
 
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
+    if (product) {
+      document.getElementById('product-detail').innerHTML = `
+        <div>
+          <img src="${product.image}" alt="제품 이미지" class="rounded-lg border" />
+          <div class="mt-4 flex space-x-4">
+            <img src="${product.image}" class="w-24 border cursor-pointer" />
+            <img src="${product.image}" class="w-24 border cursor-pointer" />
+          </div>
+        </div>
+        <div>
+          <div class="mb-2 inline-block text-sm text-white bg-red-600 px-2 py-1 rounded">인기</div>
+          <h1 class="product-title mb-2">${product.name}</h1>
+          <p class="text-sm text-gray-500 mb-1">${product.desc}</p>
+          <p class="product-price mb-2">${product.price}</p>
+          <ul class="text-sm text-gray-600 mb-4 list-disc list-inside">
+            <li>렌탈보증금: 보증금 20만원 (계약만료 100% 반환)</li>
+            <li>주문수량/렌탈세액: 24개월 조건일 경우 적용 (VAT 별도)</li>
+          </ul>
+          <div class="space-y-4 product-detail-table">
+            <div>
+              <label class="block text-sm font-medium mb-1">약정기간</label>
+              <select><option>선택해 주세요</option></select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">팩스킷</label>
+              <select><option>선택해 주세요</option></select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1">기본매수</label>
+              <select><option>선택해 주세요</option></select>
+            </div>
+          </div>
+          <p class="mt-6 text-right text-sm">총 상품금액(수량): <span class="font-semibold">0 (0개)</span></p>
+          <button class="mt-4 w-full py-3 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded">
+            카카오톡 상담하기 (개인정보노출안됨)
+          </button>
+        </div>
+      `;
+    } else {
+      document.getElementById('product-detail').innerHTML = `<p class="text-center col-span-2 text-red-500">상품 정보를 찾을 수 없습니다.</p>`;
     }
-
-    function showProductDetail(id) {
-      const product = products[id];
-      if (!product) {
-        alert("존재하지 않는 상품입니다.");
-        window.location.href = "index.html";
-        return;
-      }
-
-      document.getElementById("productTitle").textContent = product.title;
-      document.getElementById("productImage").src = product.image;
-      document.getElementById("productImage").alt = product.title;
-
-      const tagsContainer = document.getElementById("productTags");
-      tagsContainer.innerHTML = "";
-      product.tags.forEach(tag => {
-        const span = document.createElement("span");
-        span.textContent = tag;
-        span.className = "tag " + (tagColors[tag] || "tag-blue");
-        tagsContainer.appendChild(span);
-      });
-
-      document.getElementById("productModel").textContent = product.model;
-      document.getElementById("productSpeed").textContent = product.speed;
-      document.getElementById("productPrice").textContent = product.price;
-    }
-
-    document.getElementById("backBtn").addEventListener("click", () => {
-      window.history.back();
-    });
-
-    const productId = getQueryParam("id");
-    showProductDetail(productId);
   </script>
-
 </body>
 </html>
->>>>>>> c1e4a81c9a0fe37b98fe51239b1a0795d5082c4f

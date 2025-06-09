@@ -5,7 +5,6 @@
   <meta name="description" content="복합기 렌탈 전문 미래OA하이테크 - 중소기업, 병원, 학원 맞춤 서비스 제공.">
   <title>복합기 렌탈 전문 미래OA하이테크</title>
 
-  <!-- favicon -->
   <link rel="icon" href="images/favicon.jpg" type="image/jpg">
 
   <!-- Tailwind CSS -->
@@ -15,30 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
-  <!-- Custom Styles -->
   <link href="style.css" rel="stylesheet" />
-
-  <!-- initKakaoMap() 함수 정의 (SDK 로드 완료 후 호출됨) -->
-  <script>
-    function initKakaoMap() {
-      var mapContainer = document.getElementById('map');
-      if (!mapContainer) {
-        console.error('initKakaoMap(): #map 요소를 찾을 수 없습니다.');
-        return;
-      }
-
-      var mapOption = {
-        center: new kakao.maps.LatLng(37.5665, 126.9780),
-        level: 3
-      };
-      var map = new kakao.maps.Map(mapContainer, mapOption);
-
-      var marker = new kakao.maps.Marker({
-        position: mapOption.center
-      });
-      marker.setMap(map);
-    }
-  </script>
 
   <style>
     body {
@@ -60,50 +36,53 @@
     #fixed-sidebar {
       position: fixed;
       bottom: 85px;
-      right: 85px;
-      width: 320px;    /* 더 과감하게 확대: 240px → 320px */
-      height: 260px;   /* 더 과감하게 확대: 200px → 260px */
+      right: 55px;
+      width: 320px;
+      height: 260px;
       z-index: 15;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
     }
-
     #fixed-sidebar a {
       display: block;
-      width: 64px;             /* 더 과감하게 확대: 48px → 64px */
-      margin-bottom: 5px;     /* 아이콘 간격: 16px → 20px */
-      transform: none;
+      width: 64px;
       transition: transform 0.2s ease, opacity 0.2s ease;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
     }
-
     #fixed-sidebar a img {
-      display: block;
-      width: 100%;             /* 부모 a 너비(64px) 전체 사용 */
+      width: 100%;
       height: auto;
       object-fit: contain;
       border-radius: 3px;
       pointer-events: none;
     }
-
     #fixed-sidebar a:hover,
     #fixed-sidebar a:active {
       transform: translateX(-4px) scale(1.1);
       opacity: 0.9;
     }
-
-
-    /* 카카오 지도 컨테이너 */
+    @media screen and (max-width: 640px) {
+      #fixed-sidebar {
+        right: 12px;
+        bottom: 20px;
+        width: auto;
+        height: auto;
+        align-items: flex-end;
+        gap: 8px;
+      }
+      #fixed-sidebar a {
+        width: 48px;
+      }
+    }
     #map {
       width: 100%;
-      height: 320px;
-      border-radius: 8px;
-      overflow: hidden;
+      height: 400px;
     }
   </style>
 </head>
-
 <body>
-  <div id="fixed-sidebar">
+  <div id="fixed-sidebar" >
     <a href="#top" title="TOP">
       <img src="images/top.gif" alt="TOP">
     </a>
@@ -278,7 +257,7 @@
   <!-- 카카오 지도 섹션 -->
   <section id="location" class="max-w-7xl mx-auto px-6 mb-12">
     <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">오시는 길</h3>
-    <div id="map" class="w-full h-[400px]"></div>
+<div id="map" style="width: 100%; height: 400px;"></div>
   </section>
 
   <section class="max-w-7xl mx-auto px-6 py-12">
@@ -394,9 +373,8 @@
       <p class="text-gray-400 text-xs">Copyright © 2025 미래OA하이테크. All rights reserved.</p>
     </div>
   </footer>
-
   <!-- 슬라이더 스크립트 -->
-  <script>
+ <script>
     let index = 0;
     const slider = document.getElementById('slider');
     const slides = slider.children;
@@ -407,7 +385,6 @@
     setInterval(() => slide(1), 3000);
   </script>
 
-  <!-- Swiper 초기화 (필요 시) -->
   <script>
     const swiper = new Swiper('.swiper', {
       loop: true,
@@ -426,14 +403,26 @@
     });
   </script>
 
-  <!-- ① 카카오 지도 SDK를 <body> 맨 아래에 로드 (autoload=false) -->
-  <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d95535d2134a278b616878a272064d7b&autoload=false"></script>
-  <script>
-    // SDK 로드 이후 initKakaoMap() 호출
-    kakao.maps.load(function() {
-      initKakaoMap();
-    });
-  </script>
+<!-- ✅ onload 속성으로 SDK 로드 완료 후 initKakaoMap 실행 -->
+<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d95535d2134a278b616878a272064d7b&autoload=false"
+        onload="kakao.maps.load(initKakaoMap)"></script>
+
+<script>
+  function initKakaoMap() {
+    const container = document.getElementById('map');
+    if (!container) return;
+
+    const options = {
+      center: new kakao.maps.LatLng(37.5665, 126.9780),
+      level: 6
+    };
+
+    const map = new kakao.maps.Map(container, options);
+
+    const marker = new kakao.maps.Marker({ position: options.center });
+    marker.setMap(map);
+  }
+</script>
 
 </body>
 </html>
