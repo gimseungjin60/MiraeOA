@@ -403,9 +403,8 @@
     });
   </script>
 
-<!-- ✅ onload 속성으로 SDK 로드 완료 후 initKakaoMap 실행 -->
-<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d95535d2134a278b616878a272064d7b&autoload=false"
-        onload="kakao.maps.load(initKakaoMap)"></script>
+<!-- Kakao Map SDK -->
+<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d95535d2134a278b616878a272064d7b&autoload=true"></script>
 
 <script>
   function initKakaoMap() {
@@ -418,10 +417,18 @@
     };
 
     const map = new kakao.maps.Map(container, options);
-
     const marker = new kakao.maps.Marker({ position: options.center });
     marker.setMap(map);
   }
+
+  // SDK autoload 시점 대응
+  window.onload = initKakaoMap;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (typeof kakao !== 'undefined') {
+      initKakaoMap();
+    }
+  });
 </script>
 
 </body>
