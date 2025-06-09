@@ -406,26 +406,26 @@
   </script>
 <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=d95535d2134a278b616878a272064d7b&autoload=false"></script>
 <script>
-  window.addEventListener("DOMContentLoaded", function () {
-    if (typeof kakao === "undefined" || !kakao.maps) {
-      console.error("❌ Kakao SDK 로딩 실패");
-      return;
-    }
+window.addEventListener("DOMContentLoaded", function () {
+  if (typeof kakao === "undefined" || !kakao.maps) {
+    console.error("❌ Kakao SDK 로딩 실패");
+    return;
+  }
 
-    kakao.maps.load(function () {
-      const container = document.getElementById("map");
-      if (!container) return;
+  kakao.maps.load(function () {
+    const container = document.getElementById("map");
+    if (!container) return;
 
-      const options = {
-        center: new kakao.maps.LatLng(37.5665, 126.9780),
-        level: 6
-      };
+    const options = {
+      center: new kakao.maps.LatLng(37.5665, 126.9780),
+      level: 6
+    };
 
-      const map = new kakao.maps.Map(container, options);
-      const marker = new kakao.maps.Marker({ position: options.center });
-      marker.setMap(map);
-    });
+    const map = new kakao.maps.Map(container, options);
+    const marker = new kakao.maps.Marker({ position: options.center });
+    marker.setMap(map);
   });
+});
 </script>
 
 </body>
