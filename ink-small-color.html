@@ -364,6 +364,34 @@
     color: #0f7d94; /* 마우스 오버 시 파란색 */
     text-decoration: underline;
   }
+  @media screen and (max-width: 640px) {
+    .product-card .img-container {
+      height: 160px; /* 모바일에서 이미지 높이 축소 */
+    }
+  }
+  @media screen and (max-width: 640px) {
+  .product-card .info-box .title {
+    font-size: 13px;
+  }
+
+  .product-card .info-box .subtitle {
+    font-size: 11px;
+  }
+
+  .product-card .info-box .price {
+    font-size: 15px;
+  }
+
+  .product-card .info-box .btn-group button {
+    font-size: 11px;
+    padding: 5px 0;
+  }
+
+  .product-card .feature-icons img {
+    width: 20px;
+    height: 20px;
+  }
+}
 
   </style>
 </head>
@@ -551,9 +579,9 @@
         <div class="subtitle">[월] 흑백 | 컬러 무관 1000매 제공</div>
         <div class="price">28,000원</div>
         <div class="label-box">
-          <span class="sale">렌탈제품</span>
           <span class="hot">BEST</span>
           <span class="new">신제품</span>
+          <span class="sale">렌탈제품</span>
         </div>
         <div class="btn-group">
           <button class="btn-rental">렌탈제품</button>
@@ -581,9 +609,9 @@
         <div class="subtitle">[월] 흑백 | 컬러 무관 1000매 제공</div>
         <div class="price">30,000원</div>
         <div class="label-box">
-          <span class="sale">렌탈제품</span>
           <span class="hot">BEST</span>
           <span class="old">리퍼제품</span>
+          <span class="sale">렌탈제품</span>
         </div>
         <div class="btn-group">
           <button class="btn-rental">렌탈제품</button>
@@ -609,9 +637,9 @@
         <div class="subtitle">[월] 흑백 | 컬러 무관 1000매 제공</div>
         <div class="price">30,000원</div>
         <div class="label-box">
-          <span class="sale">렌탈제품</span>
           <span class="hot">BEST</span>
           <span class="new">신상품</span>
+          <span class="sale">렌탈제품</span>
         </div>
         <div class="btn-group">
           <button class="btn-rental">렌탈제품</button>
