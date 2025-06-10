@@ -90,6 +90,19 @@
     nav ul li.relative ul {
       margin-top: 0 !important; /* ✅ mt-2 제거 */
     }
+    /* 상담 스타일 추가 */
+      .cs-question {
+    background: #f1f5f9;
+    border: 1px solid #e5e7eb;
+    padding: 0.5rem;
+    width: 100%;
+    text-align: left;
+    border-radius: 0.375rem;
+    transition: background 0.3s;
+  }
+  .cs-question:hover {
+    background: #e0f2fe;
+  }
   </style>
 </head>
 <body>
@@ -97,10 +110,11 @@
     <a href="#top" title="TOP">
       <img src="images/top.gif" alt="TOP">
     </a>
-    <a href="faq.html" title="자주 묻는 질문">
-      <img src="images/sidebar-faq.jpg" alt="자주 묻는 질문">
+    <a href="qna.html" title="자주 묻는 질문">
+      <img src="images/sidebar-qna.jpg" alt="자주 묻는 질문">
     </a>
-    <a href="contact.html" title="고객센터">
+    <!-- 변경된 코드 -->
+    <a href="#" id="cs-toggle" title="고객센터">
       <img src="images/sidebar-cs.jpg" alt="고객센터">
     </a>
     <a href="#recent" title="네이버블로그">
@@ -112,7 +126,7 @@
     <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
       <!-- 로고 & 홈 링크 -->
       <a href="index.html" class="flex items-center space-x-3">
-        <img src="images/oalogo.jpg" alt="회사 로고" class="h-20" />
+        <img src="images/oalogo.jpg" alt="회사 로고" class="h-20 w-auto flex-shrink-0" />
       </a>
       
       <!-- PC용 네비게이션 -->
@@ -266,10 +280,10 @@
   <div class="border-t border-gray-400 my-12"></div>
 
   <!-- 카카오 지도 섹션 -->
-  <section id="location" class="max-w-7xl mx-auto px-6 mb-12">
+  <!-- <section id="location" class="max-w-7xl mx-auto px-6 mb-12">
     <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">오시는 길</h3>
 <div id="map" style="width: 100%; height: 400px;"></div>
-  </section>
+  </section> -->
 
   <section class="max-w-7xl mx-auto px-6 py-12">
     <h2 class="text-3xl font-bold text-center mb-2">베스트 상품</h2>
@@ -277,7 +291,7 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
       <!-- 상품 1 -->
-      <a href="product-detail.html?id=best1" class="block">
+      <a href="product-detail.html?id=HP9010" class="block">
         <article class="bg-white rounded-lg shadow-lg hover:shadow-xl hover:ring-2 hover:ring-black hover:ring-opacity-20 transition-all duration-300 cursor-pointer">
           <div class="p-4 flex justify-center">
             <img src="images/HP9010.jpg" alt="HP9010 잉크젯 컬러러복합기" class="w-96 h-auto object-contain" />
@@ -296,10 +310,10 @@
         </article>
       </a>
       <!-- 상품 2 -->
-      <a href="product-detail.html?id=best2" class="block">
+      <a href="product-detail.html?id=GX7192" class="block">
         <article class="bg-white rounded-lg shadow-lg hover:shadow-xl hover:ring-2 hover:ring-black hover:ring-opacity-20 transition-all duration-300 cursor-pointer">
           <div class="p-4 flex justify-center">
-            <img src="images/GX7092.jpg" alt="캐논 7090 컬러복합기" class="w-96 h-auto object-contain" />
+            <img src="images/GX7192.jpg" alt="캐논 7192 컬러복합기" class="w-96 h-auto object-contain" />
           </div>
           <div class="px-6 pb-6 text-center space-y-2">
             <div class="flex justify-center space-x-2 mb-2">
@@ -307,8 +321,8 @@
               <span class="text-xs font-semibold px-2 py-1 bg-purple-500 text-white rounded">추천</span>
               <span class="text-xs font-semibold px-2 py-1 bg-pink-600 text-white rounded">HOT</span>
             </div>
-            <h3 class="text-lg font-semibold">캐논7090 컬러복합기</h3>
-            <p class="text-sm text-gray-500">모델명 : 캐논-7090<br>자동양면인쇄 / 해상도 1200dpi</p>
+            <h3 class="text-lg font-semibold">캐논7192 컬러복합기</h3>
+            <p class="text-sm text-gray-500">모델명 : 캐논-7192<br>자동양면인쇄 / 해상도 1200dpi</p>
             <p class="mt-4 text-xl font-bold text-red-600">70,000원</p>
           </div>
         </article>
@@ -317,7 +331,7 @@
       <a href="product-detail.html?id=best3" class="block">
         <article class="bg-white rounded-lg shadow-lg hover:shadow-xl hover:ring-2 hover:ring-black hover:ring-opacity-20 transition-all duration-300 cursor-pointer">
           <div class="p-4 flex justify-center">
-            <img src="images/C3322.jpg" alt="캐논 IR C3322 컬러 복합기" class="w-96 h-auto object-contain" />
+            <img src="images/best-C3322.jpg" alt="캐논 IR C3322 컬러 복합기" class="w-96 h-auto object-contain" />
           </div>
           <div class="px-6 pb-6 text-center space-y-2">
             <div class="flex justify-center space-x-2 mb-2">
@@ -335,7 +349,7 @@
       <a href="product-detail.html?id=best4" class="block">
         <article class="bg-white rounded-lg shadow-lg hover:shadow-xl hover:ring-2 hover:ring-black hover:ring-opacity-20 transition-all duration-300 cursor-pointer">
           <div class="p-4 flex justify-center">
-            <img src="images/x33220NR.jpg" alt="삼성 SL-X3220NR A3 컬러 복합기" class="w-96 h-auto object-contain" />
+            <img src="images/X3220NR.jpg" alt="삼성 SL-X3220NR A3 컬러 복합기" class="w-96 h-auto object-contain" />
           </div>
           <div class="px-6 pb-6 text-center space-y-2">
             <div class="flex justify-center space-x-2 mb-2">
@@ -437,5 +451,66 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+
+<!-- 챗봇/고객센터 위젯 -->
+<div id="cs-widget" class="fixed bottom-24 right-6 w-80 bg-white rounded-lg shadow-xl border z-50 transform translate-y-full opacity-0 transition-all duration-300">
+  <div class="p-4 border-b bg-teal-600 text-white rounded-t-lg flex justify-between items-center">
+    <h3 class="text-lg font-bold">고객센터 안내</h3>
+    <button id="cs-close" class="text-white hover:text-red-300 text-xl">&times;</button>
+  </div>
+  <div class="p-4 space-y-4 text-sm">
+    <div>
+      <p class="font-semibold">📞 전화문의</p>
+      <a href="tel:010-3794-8363" class="text-blue-600 hover:underline">010-3794-8363</a>
+    </div>
+    <div>
+      <p class="font-semibold">💬 카카오톡 상담</p>
+      <a href="https://pf.kakao.com/_yourID" target="_blank" class="text-blue-600 hover:underline">카톡으로 상담하기</a>
+    </div>
+    <div>
+      <p class="font-semibold">🕒 상담 가능 시간</p>
+      <p>평일 09:00 ~ 18:00<br>점심시간 12:00 ~ 13:00</p>
+    </div>
+    <div>
+      <p class="font-semibold">❓ 자주 묻는 질문</p>
+      <ul class="space-y-1">
+        <li><button class="cs-question text-left text-gray-800 hover:text-teal-600">렌탈과 구매 중 뭐가 더 유리한가요?</button></li>
+        <li><button class="cs-question text-left text-gray-800 hover:text-teal-600">렌탈하면 A/S는 어떻게 돼요?</button></li>
+        <li><button class="cs-question text-left text-gray-800 hover:text-teal-600">단기 렌탈도 가능한가요?</button></li>
+      </ul>
+      <div id="cs-answer" class="text-gray-700 mt-3 font-medium hidden"></div>
+    </div>
+  </div>
+</div>
+<script>
+  const widget = document.getElementById("cs-widget");
+  const toggleBtn = document.getElementById("cs-toggle");
+  const closeBtn = document.getElementById("cs-close");
+  const answerBox = document.getElementById("cs-answer");
+
+  toggleBtn.addEventListener("click", () => {
+    widget.classList.toggle("translate-y-full");
+    widget.classList.toggle("opacity-0");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    widget.classList.add("translate-y-full");
+    widget.classList.add("opacity-0");
+  });
+
+  const answers = {
+    "렌탈과 구매 중 뭐가 더 유리한가요?": "월 1,000매 이상 출력 시 렌탈을 추천드리며, 그 이하일 경우 구매가 유리합니다.",
+    "렌탈하면 A/S는 어떻게 돼요?": "렌탈 기간 동안 무상 A/S가 제공되며, 24시간 이내 방문 처리됩니다.",
+    "단기 렌탈도 가능한가요?": "네, 최소 3개월부터 단기 렌탈이 가능하며 요금도 유연하게 적용됩니다."
+  };
+
+  document.querySelectorAll(".cs-question").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const question = btn.textContent.trim();
+      answerBox.textContent = answers[question] || "답변을 준비 중입니다.";
+      answerBox.classList.remove("hidden");
+    });
+  });
+</script>
 </body>
 </html>
